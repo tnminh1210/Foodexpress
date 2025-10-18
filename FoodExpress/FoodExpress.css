@@ -1,0 +1,15 @@
+/* Áp dụng font Roboto cho toàn bộ trang */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Bạn cũng có thể áp dụng cho các thẻ cụ thể */
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; /* Sử dụng độ đậm Bold đã chọn */
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; /* Sử dụng độ đậm Regular đã chọn */
+}
