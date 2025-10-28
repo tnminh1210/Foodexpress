@@ -1,0 +1,222 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.header{
+    color: var(--header-text-color);
+    background: var(--main-gradient);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.12) ;
+    align-items: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    gap: 10px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.brand h1{
+
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+.header img{
+    width: 90px ;
+    height: auto;
+    object-fit: contain;
+}
+.search-bar{
+    color: black;
+    display: flex;
+    background-color: #D1D1D1;
+    height: 20px;
+    width: 500px;
+    padding: 10px 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+.search-bar input{
+    background-color: #D1D1D1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.nav-links {
+    display: flex;
+    gap: 50px
+}
+.nav-links a {
+    text-decoration: none;
+    color: black;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* visible bottom line under the navigation; uses header-border-color when available */
+    border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    padding: 10px;
+    padding-left: 80px;
+    padding-right: 80px;
+    font-size: 20px;
+}
+.navigation a{
+    text-decoration: none;
+    color: black;
+}
+.navigation p1{
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    border-radius: 20px;
+    align-items: center;
+    padding: 20px;
+}
+.restaurant-list{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.arrange-shop{
+    display: flex;
+    margin-left: 70px;
+    margin-right: 60px;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+.arrange-shop a{
+    text-decoration: none;
+    color: black;
+}
+.box-shop {
+    border-radius: 10px;    
+    border: 1px #000;
+    width: 400px;
+    border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.box-shop h3{
+    margin: 10px;
+    color: black;
+    
+}
+.box-shop p{
+    color: gray;
+    margin: 10px;
+}
+.box-shop img{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.box-shop a{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+#fit-img {
+    height: 400px;
+    object-fit: cover;
+}
+.footer{
+    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.logo{
+    display: flex;
+}
+.logo img{
+    width: 90px ;
+    height: auto;
+    object-fit: contain;
+}
+.logo h1{
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+}
+.unlist{
+    list-style-type: none;
+}
+.unlist li{
+    margin-bottom: 20px;
+}
+.unlist i{
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+.app p{
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: white;
+}
+.app a{
+    text-decoration: none;
+    background-color: #000;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+.city-footer a{
+    text-decoration: none;
+}
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1900px;
+  height: 700px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Các slide */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: fade 10s infinite;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hiệu ứng cho từng slide */
+.slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.slide:nth-child(2) {
+  animation-delay: 4s;
+}
+.slide:nth-child(3) {
+  animation-delay: 8s;
+}
+
+/* Tạo hiệu ứng mờ dần */
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
