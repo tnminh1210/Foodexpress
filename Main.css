@@ -36,8 +36,8 @@ body{
     color: black;
     display: flex;
     background-color: #D1D1D1;
-    height: 20px;
-    width: 500px;
+    height: auto;
+    width: 50%;
     padding: 10px 10px;
     align-items: center;
     justify-content: center;
@@ -73,17 +73,21 @@ body{
     text-decoration: none;
     color: black;
 }
-.navigation p1{
-    background: linear-gradient(45deg, #FFA726, #EF5350);
-    border-radius: 20px;
-    align-items: center;
+/* Thêm khối này để định dạng tất cả các mục nav */
+.navigation p {
     padding: 20px;
+    border-radius: 20px;
+    cursor: pointer; /* Thêm con trỏ chuột */
+}
+
+/* Thêm khối này để highlight mục đang "active" */
+.navigation p.active {
+    background: linear-gradient(45deg, #FFA726, #EF5350);
 }
 .restaurant-list{
     display: flex;
     justify-content: space-between;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin: 50px 70px 20px 70px;
 }
 .arrange-shop{
     display: flex;
@@ -92,6 +96,7 @@ body{
     gap: 50px;
     flex-wrap: wrap;
     margin-bottom: 100px;
+    justify-content: space-between;
 }
 .arrange-shop a{
     text-decoration: none;
@@ -137,6 +142,7 @@ body{
     margin-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
+    padding-top: 50px;
 }
 .logo{
     display: flex;
@@ -219,4 +225,15 @@ body{
   30% { opacity: 1; }
   40% { opacity: 0; }
   100% { opacity: 0; }
+}
+/* Ẩn các mục nội dung khác ban đầu */
+#food-view, #drink-view, #cake-view {
+    display: none;
+}
+.copyright{
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    margin-top: 20px;
+    color: gray;
 }
