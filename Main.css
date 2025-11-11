@@ -16,48 +16,6 @@ body{
     padding-right: 80px;
     gap: 10px;
 }
-.brand{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.brand h1{
-
-    background: linear-gradient(45deg, #FFA726, #EF5350);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;    
-}
-.header img{
-    width: 90px ;
-    height: auto;
-    object-fit: contain;
-}
-.search-bar{
-    color: black;
-    display: flex;
-    background-color: #D1D1D1;
-    height: auto;
-    width: 50%;
-    padding: 10px 10px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-}
-.search-bar input{
-    background-color: #D1D1D1;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-}
-.nav-links {
-    display: flex;
-    gap: 50px
-}
-.nav-links a {
-    text-decoration: none;
-    color: black;
-}
 .navigation{
     display: flex;
     justify-content: space-between;
@@ -68,120 +26,6 @@ body{
     padding-left: 80px;
     padding-right: 80px;
     font-size: 20px;
-}
-.navigation a{
-    text-decoration: none;
-    color: black;
-}
-/* Thêm khối này để định dạng tất cả các mục nav */
-.navigation p {
-    padding: 20px;
-    border-radius: 20px;
-    cursor: pointer; /* Thêm con trỏ chuột */
-}
-
-/* Thêm khối này để highlight mục đang "active" */
-.navigation p.active {
-    background: linear-gradient(45deg, #FFA726, #EF5350);
-}
-.restaurant-list{
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 70px 20px 70px;
-}
-.arrange-shop{
-    display: flex;
-    margin-left: 70px;
-    margin-right: 60px;
-    gap: 50px;
-    flex-wrap: wrap;
-    margin-bottom: 100px;
-    justify-content: space-between;
-}
-.arrange-shop a{
-    text-decoration: none;
-    color: black;
-}
-.box-shop {
-    border-radius: 10px;    
-    border: 1px #000;
-    width: 400px;
-    border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-.box-shop h3{
-    margin: 10px;
-    color: black;
-    
-}
-.box-shop p{
-    color: gray;
-    margin: 10px;
-}
-.box-shop img{
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-.box-shop a{
-    display: block;
-    color: inherit;
-    text-decoration: none;
-}
-#fit-img {
-    height: 400px;
-    object-fit: cover;
-}
-.footer{
-    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding-top: 50px;
-}
-.logo{
-    display: flex;
-}
-.logo img{
-    width: 90px ;
-    height: auto;
-    object-fit: contain;
-}
-.logo h1{
-    background: linear-gradient(45deg, #FFA726, #EF5350);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;  
-}
-.unlist{
-    list-style-type: none;
-}
-.unlist li{
-    margin-bottom: 20px;
-}
-.unlist i{
-    background: linear-gradient(45deg, #FFA726, #EF5350);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-}
-.app p{
-    padding-bottom: 20px;
-    font-size: 20px;
-    color: white;
-}
-.app a{
-    text-decoration: none;
-    background-color: #000;
-    color: white;
-    border-radius: 5px;
-    padding: 15px;
-}
-.city-footer a{
-    text-decoration: none;
 }
 .slider {
   position: relative;
@@ -226,14 +70,65 @@ body{
   40% { opacity: 0; }
   100% { opacity: 0; }
 }
+.restaurant{
+    margin: 50px 70px 20px 70px;
+}
+.arrange-shop{
+    display: flex;
+    margin-left: 60px;
+    margin-right: 60px;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    justify-content: space-between;
+}
+.box-shop {
+    border-radius: 10px;    
+    border: 1px #000;
+    width: 400px;
+    border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.footer{
+    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 50px;
+}
 /* Ẩn các mục nội dung khác ban đầu */
 #food-view, #drink-view, #cake-view {
     display: none;
 }
-.copyright{
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
-    margin-top: 20px;
-    color: gray;
+.banner-shop{
+  display: flex;
+  position: relative;
+  align-items: center;
+  overflow: hidden; /* contain the blurred pseudo-element */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* blurred background only (does not affect children) */
+.banner-shop::before{
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  /* dark overlay on top of image improves contrast; adjust alpha as needed */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/fries.jpg') center/cover no-repeat;
+  filter: blur(4px);
+  transform: scale(1.05); /* hide blurred edges */
+  z-index: -1; /* keep behind content */
+}
+
+/* ensure banner children stay above the pseudo-element */
+.banner-shop > *{
+  position: relative;
+  z-index: 1;
+}
+.menu{
+    margin: 100px;
 }
