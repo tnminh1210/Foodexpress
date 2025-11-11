@@ -1,0 +1,198 @@
+.header img{
+    width: 90px ;
+    height: auto;
+    object-fit: contain;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.brand a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.brand h1{
+
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+.search-bar{
+    color: black;
+    display: flex;
+    background-color: #D1D1D1;
+    height: auto;
+    width: 50%;
+    padding: 10px 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+.search-bar input{
+    background-color: #D1D1D1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.nav-links {
+    display: flex;
+    gap: 50px
+}
+.nav-links a {
+    text-decoration: none;
+    color: black;
+}
+.navigation a{
+    text-decoration: none;
+    color: black;
+}
+.navigation p {
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.navigation p.active {
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+}
+.arrange-shop a{
+    text-decoration: none;
+    color: black;
+}
+.box-shop h3{
+    margin: 10px;
+    color: black;
+    
+}
+.box-shop p{
+    color: gray;
+    margin: 10px;
+}
+.box-shop img{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.box-shop a{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+#fit-img {
+    height: 400px;
+    object-fit: cover;
+}
+.logo{
+    display: flex;
+}
+.logo img{
+    width: 90px ;
+    height: auto;
+    object-fit: contain;
+}
+.logo h1{
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+}
+.unlist{
+    list-style-type: none;
+}
+.unlist li{
+    margin-bottom: 20px;
+}
+.unlist i{
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+.app p{
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: white;
+}
+.app a{
+    text-decoration: none;
+    background-color: #000;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+.company-footer a{
+    text-decoration: none;
+}
+.copyright{
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    margin-top: 20px;
+    color: gray;
+}
+.banner-shop img{
+    width: 280px ;
+    height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 150px;
+    margin-right: 50px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.font-banner{
+    padding: 0px 20px;
+    color: white;
+    font-size: large;
+    display:block;
+}
+.font-banner i{
+    color: yellow;
+}
+.food{
+    display: block;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 50px;
+    border-radius: 10px;
+    border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+}
+.box-shop {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.box-food{
+    position: relative;
+    display: flex;
+    margin: 30px;
+}
+.box-food img{
+    width: 200px ;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.food-name{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+}
+.btn-order {
+    background: linear-gradient(45deg, #FFA726, #EF5350);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
