@@ -6,13 +6,12 @@
     <title>Cửa hàng</title>
     <link rel="stylesheet" href="Main.css">
     <link rel="stylesheet" href="Base.css">
-    <script
-      src="https://kit.fontawesome.com/f4e506e06f.js"
-      crossorigin="anonymous"
-    ></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 </head>
 <body>
-    <header>
     <div class="header">
       <div class="brand">
         <a href="Home.html">
@@ -25,20 +24,23 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div class="nav-links">
-        <a href="Menu.html"><i class="fa-solid fa-user"></i> Tài Khoản</a>
-        <a href="Storage.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
-      </div>
+  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+
+  <a href="Cart.html" class="cart-icon"> 
+    <i class="ri-shopping-bag-line"></i> Giỏ hàng
+    <span class="cart-count">0</span>
+  </a>
+  </div>
     </div>
-    </header>
     <section>
         <div class="banner-shop">
-          <img src="img/fries-logo.png" alt="fries-logo">
+          <img src="img/Logo/logo1.png" alt="fries-logo">
           <div class="font-banner">
             <h1>Fries Vietnam - Thế Giới Khoai Tây Chiên, Mì Ý & Steak</h1>
             <p>89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
             <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> 4.5 sao Đánh giá trên Food Express</p> 
             <p> Giờ mở cửa: 10:00 - 21:30</p>
-            <p><b>$</b>15.000đ - 189.000đ</p>
+            <p><b>$</b>15,000đ - 189,000đ</p>
           </div>
         </div>
     </section>
@@ -46,73 +48,73 @@
       <h1>Thực đơn</h1>
       <div class="food">
         <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
+  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
+  <div class="food-name">
+    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
+    <p> 155,000đ</p>
+  </div>
+  
+  <button class="btn-order"
+          data-id="fries_001"
+          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
+          data-price="155000" 
+          data-img="img/1752579882035-Fries7535.jpg">
+    <b><i class="ri-add-large-line"></i></b>
+  </button>
+</div>
+      </div>
+
+      <div class="food">
+        <div class="box-food">
+  <img src="img/1752579431586-Fries7508.jpg" alt="fries4">
+  <div class="food-name">
+    <h4>Khoai Lõi Vai Bò Mỹ Xốt Tiêu Đen</h4>
+    <p> 145,000đ</p>
+  </div>
+  
+  <button class="btn-order"
+          data-id="fries_002"
+          data-name="Khoai Lõi Vai Bò Mỹ Xốt Tiêu Đen"
+          data-price="145000" 
+          data-img="img/1752579431586-Fries7508.jpg">
+    <b><i class="ri-add-large-line"></i></b>
+  </button>
+</div>
+      </div>
+      
+      <div class="food">
+        <div class="box-food">
+  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
+  <div class="food-name">
+    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
+    <p> 155,000đ</p>
+  </div>
+  
+  <button class="btn-order"
+          data-id="fries_001"
+          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
+          data-price="155000" 
+          data-img="img/1752579882035-Fries7535.jpg">
+    <b><i class="ri-add-large-line"></i></b>
+  </button>
+</div>
       </div>
       <div class="food">
         <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-          <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-          <div class="food-name">
-          <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-          <p> 155.000đ</p>
-          </div>
-          <button class="btn-order"><b>+</b></button>
-        </div>
+  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
+  <div class="food-name">
+    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
+    <p> 155,000đ</p>
+  </div>
+  
+  <button class="btn-order"
+          data-id="fries_001"
+          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
+          data-price="155000" 
+          data-img="img/1752579882035-Fries7535.jpg">
+    <b><i class="ri-add-large-line"></i></b>
+  </button>
+</div>
       </div>
     </section>
 </body>
@@ -124,24 +126,24 @@
             <h1>Food Express</h1>
           </div>
           <ul class="unlist">
-            <li><i class="fa-solid fa-envelope"></i> fooddelivery@gmail.com</li>
-            <li><i class="fa-solid fa-phone"></i> 028 3725 2002</li>
-            <li><i class="fa-solid fa-location-dot"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
-            <li><i class="fa-brands fa-facebook"></i> Food Express Viet Nam</li>
-            <li><i class="fa-brands fa-instagram"></i> FoodExpress</li>
+            <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
+            <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
+            <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
+            <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
+            <li><i class="ri-instagram-fill"></i> FoodExpress</li>
           </ul>
         </section>
         <section>
           <div class="app">
             <h1>Ứng dụng Food Express</h1>
-            <p><a href="#"><i class="fa-brands fa-apple"></i> App Store</a></p>
-            <p><a href="#"><i class="fa-brands fa-google-play"></i> Google Play</a></p>
+            <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
+            <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
               
               
           </div>
         </section>
         <section>
-          <div class="city-footer">
+          <div class="company-footer">
             <h1>Công ty</h1>
             <p><a href="#">Giới thiệu</a></p>
             <p><a href="#">Chung Tâm trợ giúp</a></p>
@@ -157,4 +159,5 @@
     <div class="copyright">
       <p>© 2024 Food Express. All rights reserved.</p>
   </footer>
+  <script src="main.js"></script>
 </html>

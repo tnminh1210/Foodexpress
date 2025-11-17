@@ -6,13 +6,12 @@
     <title>Food Express</title>
     <link rel="stylesheet" href="Main.css">
     <link rel="stylesheet" href="Base.css">
-    <!-- get icon in fontawsome.com -->
-    <script
-      src="https://kit.fontawesome.com/f4e506e06f.js"
-      crossorigin="anonymous"
-    ></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
   </head>
-  <header>
+  <body>
     <div class="header">
       <div class="brand">
         <a href="Home.html">
@@ -25,58 +24,60 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div class="nav-links">
-        <a href="Menu.html"><i class="fa-solid fa-user"></i> Tài Khoản</a>
-        <a href="Storage.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
-      </div>
+  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+
+  <a href="Cart.html" class="cart-icon"> 
+    <i class="ri-shopping-bag-line"></i> Giỏ hàng
+    <span class="cart-count">0</span>
+  </a>
+  </div>
     </div>
     <div class="navigation">
     <p class="active" id="nav-home">
         <a href="#" onclick="showView(event, 'home-view', 'nav-home')">
-            <i class="fa-solid fa-house-chimney"></i> Trang chủ
+            <i class="ri-home-smile-fill"></i> Trang chủ
         </a>
     </p>
     <p id="nav-food">
         <a href="#" onclick="showView(event, 'food-view', 'nav-food')">
-            <i class="fa-solid fa-drumstick-bite"></i> Thức ăn
+            <i class="ri-restaurant-fill"></i> Thức ăn
         </a>
     </p>
     <p id="nav-drink">
         <a href="#" onclick="showView(event, 'drink-view', 'nav-drink')">
-            <i class="fa-solid fa-mug-hot"></i> Nước uống
+            <i class="ri-drinks-2-fill"></i> Nước uống
         </a>
     </p>
     <p id="nav-cake">
         <a href="#" onclick="showView(event, 'cake-view', 'nav-cake')">
-            <i class="fa-solid fa-ice-cream"></i> Tráng miệng
+            <i class="ri-cake-3-fill"></i> Tráng miệng
         </a>
     </p>
 </div>
-  </header>
 <nav>
   <div class="slider">
     <div class="slide">
-      <img src="img/1.png" alt="sale">
+      <img src="img/1.png" alt="banner">
     </div>
     <div class="slide">
-      <img src="img/2.jpg" alt="sale">
+      <img src="img/2.jpg" alt="banner">
     </div>
     <div class="slide">
-      <img src="img/3.jpg" alt="sale">
+      <img src="img/3.jpg" alt="banner">
     </div>
   </div>
 </nav>
   <section id="home-view">
     <div class="restaurant">
-      <h2>Nhà hàng nổi bật</h2>
+      <h1>Nhà hàng nổi bật</h1>
     </div>
     <div class="arrange-shop">
       <div class="box-shop">
-        <a href="shop.html" id="fries-vietnam">
-          <img
-            src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/504125159_122208478004131602_6737603923875890162_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGGxPZpTgyyLJA-Sh_G0LKDQSI5xGW7VAZBIjnEZbtUBuCbQuDAiUfaNx0ytmuJ4VZeUj8egg82p0kBO07fFata&_nc_ohc=gwASgg7l1p8Q7kNvwEQ5Hd4&_nc_oc=AdlGp_p1zjBrFIJbr6D6F2sBZkzq8fZj1Bfe4p86sL1ZuH_nttDNImi7kcOJMblGaCA&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=6F22HcVs-B_NbNoohVQwig&oh=00_AfeI-K_v-m3xM8nW7HgflpjlFEFT3mL5EtIOxWl4X-5jaQ&oe=68FE74DA"
+        <a href="Shop.html" id="fries-vietnam">
+          <img id="fit-img" src="img/Logo/logo1.png"
             alt="fries"
           />
-          <h3>Fries Vietnam-Thế Giới Khoai Tây Chiên ...</h3>
+          <h3>Fries Vietnam-Thế Giới Khoai Tây C..</h3>
           <p>
             89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Thành phố Hồ Chí Minh
           </p>
@@ -84,49 +85,49 @@
       </div>
       <div class="box-shop">
             <a href="heypelo.html">
-              <img id="fit-img" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/341019030_1353759368742103_3530237553405246615_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGsocZCZn4NMycNEeMmx0S9VA02wDqHowtUDTbAOoejC_s3w7BGiEIbLKow6smMta_kdufIAysbn0Np7sEYo097&_nc_ohc=XK2-sx26NocQ7kNvwE7apR-&_nc_oc=Adkzvwu84LulB0pSvNU1YSemlZAARRcRblNzxZFSdSLPWbV67cfZMG18TjGB53vkfSEMTaOc5Ds4UMmVkmeZWM4t&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=C1V-M60ihrrdXK_grDIzXw&oh=00_AfeM7EGQkkeD1YKafkndmp2tAu9ctJI2HoInJpCEYOuqZQ&oe=68FED2ED" alt="heypelo">
+              <img id="fit-img" src="img/Logo/logo2.jpg" alt="heypelo">
               <h3>Hey! Pelo - Tacos Pháp</h3>
               <p>11 Hẽm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. Hồ Chí Minh</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="comtam.html">
-              <img id="fit-img" src="https://statics.vinpearl.com/com-tam-ngon-o-sai-gon-0_1630562640.jpg" alt="comtam">
+              <img id="fit-img" src="img/Logo/logo3.png" alt="comtam">
               <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
               <p>74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="banhmi.html">
-              <img id="fit-img" src="https://banhmibahuynh.vn/wp-content/uploads/2025/09/Bieu-tuong-Madam-Win-2025-Nen-trong-suot-1024x1024.png" alt="banhmi">
+              <img id="fit-img" src="img/Logo/logo4.png" alt="banhmi">
               <h3>Bánh Mì Bà Huynh</h3>
               <p>197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="phuclong.html">
-              <img id="fit-img" src="https://phuclong.com.vn/_next/static/images/logo-ba196fcddcd6f23a70406fd4cf71d422.png" alt="phuclong">
+              <img id="fit-img" src="img/Logo/logo5.png" alt="phuclong">
               <h3>Phúc Long</h3>
               <p>734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="koi.html">
-              <img id="fit-img" src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/546268228_1186539330175995_4176480826589179071_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFp0iYYmWuJ0HNsq6Eni0j-QVIJQ9_BkidBUglD38GSJ7u-eVq6CKvwBR7wt8iqrI6QG-MxrA2Fsr_GH-PchKBR&_nc_ohc=N7779GsjXEIQ7kNvwELG39-&_nc_oc=AdmD7mBhMvzZbLiYtIG9Qxr0Uniep3GXzils8vLLwahXyhYc8Pd4pfaKsBionfG0R88n9NXcjuSxMGXrQF0xOqZR&_nc_zt=23&_nc_ht=scontent.fsgn2-5.fna&_nc_gid=GzWYtL7ff4a-50ixcPR9Ww&oh=00_Afc0FLZscDxdnoLeruKgX8yLlCouDBkcebaOEPIm1VSDtg&oe=68FEE8A6" alt="KoiT">
+              <img id="fit-img" src="img/Logo/logo6.jpg" alt="KoiT">
               <h3>Koi Thé</h3>
               <p>372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="TLJ.html">
-              <img id="fit-img" src="https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/528558206_122189694854298981_6336467700205780792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGtgBpZwIokRzQzmfcOM0YcRLnmLdcv9CtEueYt1y_0K-cXR5ooMLzwR8krXPe_FLSS08AxVx3N-dxxmYcOftK4&_nc_ohc=JCGpfdN6vbUQ7kNvwEOKG62&_nc_oc=Adko71PpzH33A70RqkNKEaR1jQHOQSy6XpthmtbCOD8KQfq7EBW8ukGgYzSYxmDwS2TdTJ-OKA-n59nml4bxrGWH&_nc_zt=23&_nc_ht=scontent.fsgn2-11.fna&_nc_gid=8-d3V_Ao0qvqDtT5sHPt1w&oh=00_Aff2J2QIbNjGCJqSAgDtXpP-99El_xS1HjkpGGrUl1bszw&oe=68FED5B7" alt="TLJ">
+              <img id="fit-img" src="img/Logo/logo7.jpg" alt="TLJ">
               <h3>TOUS les JOURS</h3>
               <p>A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM</p>
             </a>
       </div>
       <div class="box-shop">
             <a href="PB.html">
-              <img id="fit-img" src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/471147001_122146425230341276_2702371820811665671_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeG9S31xuaEZAKyihfFyz_8-ViZaK5waIE5WJlornBogTiAm3xCUwTrRSe88BqlET0uGNn0CiQtyfhise2Kwg3Ha&_nc_ohc=B5PV5gDu_lMQ7kNvwFQD266&_nc_oc=AdmF-5udBnFLemCwfagwb7pYVO9NJfmLq4b8OtudbzajGLfLdRz07R2hXqRWD5VzZOg&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=dVtfHWop30pt4XKVhSI5-Q&oh=00_Afcqz3sJp0PMYq9S9M8vjVXwEiBC7bG7LdnxKS8pwUq-pw&oe=68FF8EB0" alt="KoiT">
+              <img id="fit-img" src="img/Logo/logo8.jpg" alt="PB">
               <h3>Paris Baguette</h3>
               <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110</p>
             </a>
@@ -134,14 +135,14 @@
     </div>
   </section>
   <section id="food-view">
-    <div class="restaurant-list">
-      <h2>Nhà hàng nổi bật</h2>
+    <div class="restaurant">
+      <h1>Nhà hàng nổi bật</h1>
     </div>
     <div class="arrange-shop">
       <div class="box-shop">
         <a href="Fries.html">
           <img
-            src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/504125159_122208478004131602_6737603923875890162_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGGxPZpTgyyLJA-Sh_G0LKDQSI5xGW7VAZBIjnEZbtUBuCbQuDAiUfaNx0ytmuJ4VZeUj8egg82p0kBO07fFata&_nc_ohc=gwASgg7l1p8Q7kNvwEQ5Hd4&_nc_oc=AdlGp_p1zjBrFIJbr6D6F2sBZkzq8fZj1Bfe4p86sL1ZuH_nttDNImi7kcOJMblGaCA&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=6F22HcVs-B_NbNoohVQwig&oh=00_AfeI-K_v-m3xM8nW7HgflpjlFEFT3mL5EtIOxWl4X-5jaQ&oe=68FE74DA"
+            src="img/Logo/logo1.png"
             alt="fries"
           />
           <h3>Fries Vietnam-Thế Giới Khoai Tây Chiên ...</h3>
@@ -155,7 +156,7 @@
         <a href="heypelo.html">
           <img
             id="fit-img"
-            src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/341019030_1353759368742103_3530237553405246615_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGsocZCZn4NMycNEeMmx0S9VA02wDqHowtUDTbAOoejC_s3w7BGiEIbLKow6smMta_kdufIAysbn0Np7sEYo097&_nc_ohc=XK2-sx26NocQ7kNvwE7apR-&_nc_oc=Adkzvwu84LulB0pSvNU1YSemlZAARRcRblNzxZFSdSLPWbV67cfZMG18TjGB53vkfSEMTaOc5Ds4UMmVkmeZWM4t&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=C1V-M60ihrrdXK_grDIzXw&oh=00_AfeM7EGQkkeD1YKafkndmp2tAu9ctJI2HoInJpCEYOuqZQ&oe=68FED2ED"
+            src="img/Logo/logo2.jpg"
             alt="heypelo"
           />
           <h3>Hey! Pelo - Tacos Pháp</h3>
@@ -166,7 +167,7 @@
         <a href="comtam.html">
           <img
             id="fit-img"
-            src="https://statics.vinpearl.com/com-tam-ngon-o-sai-gon-0_1630562640.jpg"
+            src="img/Logo/logo3.png"
             alt="comtam"
           />
           <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
@@ -177,7 +178,7 @@
         <a href="banhmi.html">
           <img
             id="fit-img"
-            src="https://banhmibahuynh.vn/wp-content/uploads/2025/09/Bieu-tuong-Madam-Win-2025-Nen-trong-suot-1024x1024.png"
+            src="img/Logo/logo4.png"
             alt="banhmi"
           />
           <h3>Bánh Mì Bà Huynh</h3>
@@ -188,7 +189,7 @@
         <a href="backburger.html">
           <img
             id="fit-img"
-            src="https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/448020218_122105120984350675_639204820832366322_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGbkt-fQiIb1S0tpI2bSkfDuSuIl6QjTZy5K4iXpCNNnEyfoH2f7j15mEnU3j4myQLpFnqQ1WVmnPYXWj63IEpW&_nc_ohc=Hx_3Hjm6lIkQ7kNvwE_ZRd5&_nc_oc=AdkGgT8jMoYyzWpfF6A3Y_PY48reD1HvJilzOpasm_g5P-I9WJlEjdIkRjejc5U6xYmPHsmZiR4yFrU81ymyso5M&_nc_zt=23&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=i7d-55YsrfV8uoyOmasskA&oh=00_AfejF1RCMKjiFdISkqkAL56ni4Rr2Lb4ayk60BKOtly2Hw&oe=69015E9B"
+            src="img/Logo/logo5.png"
             alt="backburger"
           />
           <h3>Back's Burger</h3>
@@ -201,7 +202,7 @@
         <a href="texas.html">
           <img
             id="fit-img"
-            src="https://theme.hstatic.net/200000937899/1001373837/14/page_banner_image.jpg?v=1018"
+            src="img/Logo/logo6.jpg"
             alt="Texas"
           />
           <h3>Texas Chicken</h3>
@@ -212,7 +213,7 @@
         <a href="Ramen.html">
           <img
             id="fit-img"
-            src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-1/475511624_1127150566087290_145099186128661024_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=2d3e12&_nc_eui2=AeEHnOVnBUdAPJQQrAXiLLvgchi94lVXj35yGL3iVVePfv95JYneLeUiIRq2dg4RZ4FXyiJvpOJFefw7F2TM4nVe&_nc_ohc=YnxMUk8lAwUQ7kNvwEvDqw9&_nc_oc=Adn4hPjpRDD19KIcT1d8Fg3VR_vWE6TgX71kCKOcF-GQjd-yHu5H-KscnhHvLar1BPu1ELgc76fmHLAiw5n0sFcT&_nc_zt=24&_nc_ht=scontent.fsgn2-3.fna&_nc_gid=DK_5SESc9dyOIDJ6wZUS8Q&oh=00_AfdSBTEdnx98lNqCMWt_vN6wIKy4c7RYJibIxL0cCO8K9g&oe=69015F4D"
+            src="img/Logo/logo7.jpg"
             alt="Ramen"
           />
           <h3>Hachiban Ramen</h3>
@@ -223,7 +224,7 @@
         <a href="pizza.html">
           <img
             id="fit-img"
-            src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/352386659_630892538962734_2991141170219283993_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGfyF4G3azSh9ScAISVTAIIIrgBNOrCYSciuAE06sJhJyRvjp8v_ee2kDnEUK8VebzzBaiXxNvILs1TL-wCnT8p&_nc_ohc=idi4ddXimUwQ7kNvwGe_lbm&_nc_oc=AdlfS_HXAlLIyIs1YCeR3NjZmKI0dTvVKPkN4D5IcvMx-a4ahr8w-fKIADDRK5WB_vqeIN9Eo8W37xwT0hJJvQuv&_nc_zt=23&_nc_ht=scontent.fsgn2-6.fna&_nc_gid=vhkpVp6ljVUKTteXe2N_Lg&oh=00_Afdkb8PaCfKt8LVxpt5EmRD-ijpqad2tYqWUj2yjnrv1XQ&oe=69018D80"
+            src="img/Logo/logo8.jpg"
             alt="pizza"
           />
           <h3>Pizza 4P's</h3>
@@ -236,8 +237,8 @@
     </div>
   </section>
   <section id="drink-view">
-    <div class="restaurant-list">
-      <h2>Nhà hàng nổi bật</h2>
+    <div class="restaurant">
+      <h1>Nhà hàng nổi bật</h1>
     </div>
     <div class="arrange-shop">
       <div class="box-shop">
@@ -305,8 +306,8 @@
     </div>
   </section>
   <section id="cake-view">
-    <div class="restaurant-list">
-      <h2>Nhà hàng nổi bật</h2>
+    <div class="restaurant">
+      <h1>Nhà hàng nổi bật</h1>
     </div>
     <div class="arrange-shop">
       <div class="box-shop">
@@ -373,6 +374,7 @@
       </div>
     </div>
   </section>
+  </body>
   <footer>
     <div class="footer">
         <section>
@@ -381,24 +383,24 @@
             <h1>Food Express</h1>
           </div>
           <ul class="unlist">
-            <li><i class="fa-solid fa-envelope"></i> fooddelivery@gmail.com</li>
-            <li><i class="fa-solid fa-phone"></i> 028 3725 2002</li>
-            <li><i class="fa-solid fa-location-dot"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
-            <li><i class="fa-brands fa-facebook"></i> Food Express Viet Nam</li>
-            <li><i class="fa-brands fa-instagram"></i> FoodExpress</li>
+            <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
+            <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
+            <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
+            <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
+            <li><i class="ri-instagram-fill"></i> FoodExpress</li>
           </ul>
         </section>
         <section>
           <div class="app">
             <h1>Ứng dụng Food Express</h1>
-            <p><a href="#"><i class="fa-brands fa-apple"></i> App Store</a></p>
-            <p><a href="#"><i class="fa-brands fa-google-play"></i> Google Play</a></p>
+            <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
+            <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
               
               
           </div>
         </section>
         <section>
-          <div class="city-footer">
+          <div class="company-footer">
             <h1>Công ty</h1>
             <p><a href="#">Giới thiệu</a></p>
             <p><a href="#">Chung Tâm trợ giúp</a></p>
