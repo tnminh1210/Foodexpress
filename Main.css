@@ -6,31 +6,37 @@ body{
 
 }
 .header{
-    color: var(--header-text-color);
-    background: var(--main-gradient);
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(0,0,0,0.12) ;
-    align-items: center;
-    padding-left: 80px;
-    padding-right: 80px;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.12) ;
+  align-items: center;
+  padding: 10px 20px;  
+  padding-left: 80px;
+  padding-right: 80px;
+  gap: 50px;
+  font-size: large;
+  /* keep header in normal flow but stick to top when scrolling
+     position: sticky preserves margins/padding while making it fixed when scrolled */
+   /* Safari */
+  position: sticky;
+   top: 0;
+  background-color: white; /* ensure background covers content when sticky */
+  z-index: 1000;
 }
 .navigation{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* visible bottom line under the navigation; uses header-border-color when available */
-    border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
-    padding: 10px;
-    padding-left: 80px;
-    padding-right: 80px;
-    font-size: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: larger;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: bold;
 }
 .slider {
   position: relative;
   width: 100%;
-  max-width: 1900px;
   height: 700px;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
@@ -71,23 +77,27 @@ body{
   100% { opacity: 0; }
 }
 .restaurant{
-    margin: 50px 70px 20px 70px;
+    margin: 50px 100px 20px 100px;
 }
 .arrange-shop{
     display: flex;
-    margin-left: 60px;
-    margin-right: 60px;
     gap: 50px;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 100px;
-    justify-content: space-between;
+    margin: 50px 100px 100px 100px;
+    align-items: center;
 }
 .box-shop {
     border-radius: 10px;    
     border: 1px #000;
-    width: 400px;
+    width: 350px;
+    height: 500px;
     border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.box-shop:hover{
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
 }
 .footer{
     border-top: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
@@ -108,8 +118,6 @@ body{
   position: relative;
   align-items: center;
   overflow: hidden; /* contain the blurred pseudo-element */
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 /* blurred background only (does not affect children) */
@@ -130,5 +138,8 @@ body{
   z-index: 1;
 }
 .menu{
-    margin: 100px;
+    margin: 50px 200px 100px 200px;
+}
+.cart{
+  padding: 110px 9% 30px;
 }
