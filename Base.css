@@ -69,6 +69,7 @@ footer {
     background: linear-gradient(45deg, #FFA726, #EF5350);
     color: white;
 }
+
 /* THAY THẾ .nav-links span TRONG Base.css BẰNG KHỐI NÀY */
 .cart-icon {
   position: relative; /* Thẻ <a> làm gốc */
@@ -100,6 +101,8 @@ footer {
     padding: 20px;
     border-radius: 20px;
     cursor: pointer;
+    color: black;
+    text-decoration: none;
 }
 .navigation p.active {
     background: linear-gradient(45deg, #FFA726, #EF5350);
@@ -135,6 +138,7 @@ footer {
 }
 #fit-img {
     height: 400px;
+    min-height: 400px;
     object-fit: cover;
 }
 .logo{

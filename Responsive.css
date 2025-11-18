@@ -26,12 +26,17 @@
         width: 100%;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 20px;
     }
 
     /* --- Sửa Slider (Ảnh bìa) --- */
     .slider {
         height: 300px; /* Giảm chiều cao banner */
     }
+    .slide img {
+    object-fit: contain; /* Sửa từ 'cover' thành 'contain' */
+    background-color: #f0f0f0; /* Thêm màu nền cho đỡ trống */
+}
 
     /* --- Sửa Layout chính (Home) --- */
     .restaurant, .footer {
