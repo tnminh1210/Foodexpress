@@ -1,3 +1,34 @@
+// --- PHẦN 3: LOGIC ẨN/HIỆN HEADER KHI SCROLL ---
+// (Bạn có thể dán code này vào cuối file main.js)
+
+let lastScrollTop = 0; // Biến để lưu vị trí cuộn cuối cùng
+const header = document.querySelector('.header');
+const scrollThreshold = 100; // Cần cuộn 100px mới bắt đầu ẩn
+
+window.addEventListener('scroll', function() {
+    let currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    // Chỉ thực hiện khi đã cuộn qua ngưỡng
+    if (currentScrollTop > scrollThreshold) {
+        
+        if (currentScrollTop > lastScrollTop) {
+            // Đang cuộn xuống (Scroll Down)
+            header.classList.add('header-hidden');
+        } else {
+            // Đang cuộn lên (Scroll Up)
+            header.classList.remove('header-hidden');
+        }
+
+    } else {
+        // Nếu ở gần đầu trang, luôn luôn hiển thị header
+        header.classList.remove('header-hidden');
+    }
+
+    // Cập nhật vị trí cuộn cuối cùng
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+});
+
+
 // --- THAY THẾ TOÀN BỘ FILE main.js BẰNG MÃ NÀY ---
 
 // -------------------------------------------------------------------

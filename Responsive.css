@@ -1,0 +1,144 @@
+/* --- NỘI DUNG CỦA FILE Responsive.css --- */
+
+/* Áp dụng các quy tắc này khi màn hình rộng 800px trở xuống */
+@media (max-width: 800px) {
+
+    /* --- Sửa Header --- */
+    .header {
+        flex-wrap: wrap; /* Cho phép các mục xuống dòng */
+        padding: 20px; /* Giảm lề */
+        gap: 20px;
+    }
+    .search-bar {
+        width: 100%;  /* Thanh tìm kiếm 100% */
+        order: 3;     /* Đẩy xuống cuối */
+    }
+    .brand { order: 1; }
+    .nav-links { order: 2; }
+
+    /* --- Sửa Navigation (Thức ăn, Nước uống...) --- */
+    .navigation {
+        flex-direction: column; /* Xếp chồng lên nhau */
+        margin: 20px;
+        font-size: medium;
+    }
+    .navigation p {
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 20px;
+    }
+
+    /* --- Sửa Slider (Ảnh bìa) --- */
+    .slider {
+        height: 300px; /* Giảm chiều cao banner */
+    }
+    .slide img {
+    object-fit: contain; /* Sửa từ 'cover' thành 'contain' */
+    background-color: #f0f0f0; /* Thêm màu nền cho đỡ trống */
+}
+
+    /* --- Sửa Layout chính (Home) --- */
+    .restaurant, .footer {
+        margin: 20px; /* Giảm lề (từ 100px xuống 20px) */
+    }
+    .arrange-shop {
+        flex-direction: column; /* Xếp chồng các cửa hàng */
+        margin: 20px;
+        gap: 30px;
+    }
+    .box-shop {
+        width: 100%; /* Cửa hàng chiếm 100% */
+        max-width: 350px; /* Nhưng không quá 350px */
+        height: auto; /* Chiều cao tự động */
+        margin: 0 auto; /* Tự động căn giữa */
+    }
+    #fit-img {
+        height: 250px; /* Giảm chiều cao ảnh */
+    }
+    
+    /* --- Sửa Layout trang Shop (Cửa hàng) --- */
+    .menu {
+        margin: 20px; /* Giảm lề (từ 200px xuống 20px) */
+    }
+    .banner-shop {
+        flex-direction: column; /* Xếp chồng logo và chữ */
+        padding: 20px 0;
+    }
+    .banner-shop img {
+        margin: 10px;
+        width: 150px;
+        height: 150px;
+    }
+    .font-banner {
+        font-size: medium;
+        text-align: center;
+    }
+    .food {
+        margin: 20px 0; /* Giảm lề (từ 60px xuống 0) */
+    }
+    .box-food {
+        flex-direction: column; /* Xếp chồng ảnh và chữ */
+        align-items: center; /* Căn giữa */
+        padding-bottom: 70px; /* Thêm không gian cho nút `+` */
+    }
+    .box-food img {
+        width: 90%;
+        height: auto;
+    }
+    .food-name {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .btn-order {
+        position: static; /* Bỏ định vị tuyệt đối */
+        width: 90%;
+        margin-top: 15px;
+        border-radius: 10px;
+    }
+
+    /* --- Sửa Layout trang Cart (Giỏ hàng) --- */
+    .cart {
+        padding: 20px; /* Giảm lề (từ 110px và 9%) */
+    }
+    
+    /* Biến bảng giỏ hàng thành danh sách */
+    .cart-header {
+        display: none; /* Ẩn tiêu đề (Sản phẩm, Giá...) */
+    }
+    .cart-item {
+        flex-direction: column; /* Xếp chồng các mục */
+        align-items: flex-start; /* Căn trái */
+        gap: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    /* Cho tất cả các cột rộng 100% */
+    .cart-item > * {
+        flex-basis: 100%;
+        width: 100%;
+        text-align: left !important; /* Ghi đè căn giữa */
+    }
+    /* Thêm "giả" tiêu đề cho dễ đọc */
+    .cart-item .price::before { content: "Giá: "; font-weight: bold; }
+    .cart-item .quantity::before { content: "Số lượng: "; font-weight: bold; }
+    .cart-item .total-price::before { content: "Tổng: "; font-weight: bold; }
+    
+    .cart-item .quantity input {
+        width: 60px;
+    }
+    .cart-item .remove {
+        text-align: center !important;
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .cart-total {
+        width: 100%; /* Tổng tiền 100% */
+        margin: 20px 0 0 0; /* Xóa margin cũ */
+    }
+}
