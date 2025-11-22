@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Register</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff5722, #ff3d00);
+      overflow: hidden;
+    }
+    nav {
+      width: 100%;
+      background: white;
+      padding: 15px 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #ff3d00;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      color: #e63300;
+      transform: scale(1.1);
+    }
+    .container {
+      width: 350px;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      text-align: center;
+      margin-top: 100px;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: fadeIn 0.6s forwards;
+    }
+    h2 {
+      color: #ff3d00;
+      margin-bottom: 20px;
+      animation: fadeIn 0.8s forwards;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      transition: transform 0.3s;
+    }
+    input:focus {
+      transform: scale(1.05);
+      border-color: #ff3d00;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff3d00;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    button:hover {
+      background-color: #e63300;
+      transform: scale(1.03);
+    }
+    .switch {
+      margin-top: 15px;
+      color: #444;
+      font-size: 14px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.4s;
+    }
+    .switch span {
+      color: #ff3d00;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#" onclick="showLogin()">Đăng nhập</a>
+    <a href="#" onclick="showRegister()">Đăng ký</a>
+  </nav>
+
+  <div class="container" id="loginBox">
+    <h2>Đăng nhập</h2>
+    <input type="text" placeholder="Tên đăng nhập" />
+    <input type="password" placeholder="Mật khẩu" />
+    <button onclick="window.location.href='index.html'">Đăng nhập</button>
+    <p class="switch">Chưa có tài khoản? <span onclick="showRegister()">Đăng ký</span></p>
+  </div>
+
+  <div class="container" id="registerBox" style="display:none;">
+    <h2>Đăng ký</h2>
+    <input type="text" placeholder="Tên đăng nhập" />
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Mật khẩu" />
+    <button onclick="window.location.href='index.html'">Tạo tài khoản</button>
+    <p class="switch">Đã có tài khoản? <span onclick="showLogin()">Đăng nhập</span></p>
+  </div>
+
+  <script>
+    function showRegister() {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('registerBox').style.display = 'block';
+    }
+    function showLogin() {
+      document.getElementById('registerBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
