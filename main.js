@@ -262,3 +262,12 @@ function updateCartTotal(cart) {
     document.querySelector('.subtotal').textContent = subtotal.toLocaleString('vi-VN') + 'đ';
     document.querySelector('.grand-total').textContent = grandTotal.toLocaleString('vi-VN') + 'đ';
 }
+
+function showRegister() {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('registerBox').style.display = 'block';
+    }
+    function showLogin() {
+      document.getElementById('registerBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }

@@ -350,3 +350,52 @@ footer {
     cursor: pointer;
     margin-top: 20px;
 }
+.container input {
+    width: 90%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: transform 0.3s;
+}
+.container input:focus {
+    transform: scale(1.05);
+    border-color: #ff3d00;
+}
+.container button {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff3d00;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.container button:hover {
+    background-color: #e63300;
+    transform: scale(1.03);
+}
+.switch {
+    margin-top: 15px;
+    color: #444;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.4s;
+ }
+.switch span {
+    color: #ff3d00;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
