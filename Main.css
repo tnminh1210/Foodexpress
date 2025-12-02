@@ -96,8 +96,8 @@ body{
 .box-shop {
     border-radius: 10px;    
     border: 1px #000;
-    width: 350px;
-    height: 500px;
+    width: 380px;
+    height: auto;
     border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }

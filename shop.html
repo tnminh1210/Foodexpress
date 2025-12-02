@@ -34,90 +34,26 @@
   </div>
     </div>
     <section>
-        <div class="banner-shop">
-          <img src="img/Logo/logo1.png" alt="fries-logo">
-          <div class="font-banner">
-            <h1>Fries Vietnam - Thế Giới Khoai Tây Chiên, Mì Ý & Steak</h1>
-            <p>89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
-            <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> 4.5 sao Đánh giá trên Food Express</p> 
-            <p> Giờ mở cửa: 10:00 - 21:30</p>
-            <p><b>$</b>15,000đ - 189,000đ</p>
-          </div>
-        </div>
-    </section>
-    <section class="menu">
-      <h1>Thực đơn</h1>
-      <div class="food">
-        <div class="box-food">
-  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-  <div class="food-name">
-    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-    <p> 155,000đ</p>
-  </div>
-  
-  <button class="btn-order"
-          data-id="fries_001"
-          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
-          data-price="155000" 
-          data-img="img/1752579882035-Fries7535.jpg">
-    <b><i class="ri-add-large-line"></i></b>
-  </button>
-</div>
+    <div class="banner-shop" id="shop-banner">
+      <img src="" alt="logo" id="shop-logo"> 
+      <div class="font-banner">
+        <h1 id="shop-name"></h1>
+        <p id="shop-address"></p>
+        <p>
+            <i class="fa-solid fa-star"></i> 
+            <span id="shop-rating"></span> sao Đánh giá trên Food Express
+        </p> 
+        <p id="shop-time"></p>
+        <p><b id="shop-price"></b></p>
       </div>
+    </div>
+</section>
 
-      <div class="food">
-        <div class="box-food">
-  <img src="img/1752579431586-Fries7508.jpg" alt="fries4">
-  <div class="food-name">
-    <h4>Khoai Lõi Vai Bò Mỹ Xốt Tiêu Đen</h4>
-    <p> 145,000đ</p>
-  </div>
-  
-  <button class="btn-order"
-          data-id="fries_002"
-          data-name="Khoai Lõi Vai Bò Mỹ Xốt Tiêu Đen"
-          data-price="145000" 
-          data-img="img/1752579431586-Fries7508.jpg">
-    <b><i class="ri-add-large-line"></i></b>
-  </button>
-</div>
+<section class="menu">
+  <h1>Thực đơn</h1>
+  <div class="food-container" id="menu-container">
       </div>
-      
-      <div class="food">
-        <div class="box-food">
-  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-  <div class="food-name">
-    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-    <p> 155,000đ</p>
-  </div>
-  
-  <button class="btn-order"
-          data-id="fries_001"
-          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
-          data-price="155000" 
-          data-img="img/1752579882035-Fries7535.jpg">
-    <b><i class="ri-add-large-line"></i></b>
-  </button>
-</div>
-      </div>
-      <div class="food">
-        <div class="box-food">
-  <img src="img/1752579882035-Fries7535.jpg" alt="fries4">
-  <div class="food-name">
-    <h4>Khoai Lõi Vai Bò Mỹ Xốt Phômai</h4>
-    <p> 155,000đ</p>
-  </div>
-  
-  <button class="btn-order"
-          data-id="fries_001"
-          data-name="Khoai Lõi Vai Bò Mỹ Xốt Phômai"
-          data-price="155000" 
-          data-img="img/1752579882035-Fries7535.jpg">
-    <b><i class="ri-add-large-line"></i></b>
-  </button>
-</div>
-      </div>
-    </section>
+</section>
 </body>
 <footer>
     <div class="footer">
@@ -161,4 +97,5 @@
       <p>© 2024 Food Express. All rights reserved.</p>
   </footer>
   <script src="main.js"></script>
+  <script src="data.js"></script>
 </html>
