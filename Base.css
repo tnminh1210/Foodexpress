@@ -137,8 +137,8 @@ footer {
     text-decoration: none;
 }
 #fit-img {
-    height: 400px;
-    min-height: 350px;
+    height: 340px;
+    width: 100%;
     object-fit: cover;
 }
 .logo{

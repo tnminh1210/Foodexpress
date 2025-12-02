@@ -1,6 +1,3 @@
-// --- PHẦN 3: LOGIC ẨN/HIỆN HEADER KHI SCROLL ---
-// (Bạn có thể dán code này vào cuối file main.js)
-
 let lastScrollTop = 0; // Biến để lưu vị trí cuộn cuối cùng
 const header = document.querySelector('.header');
 const scrollThreshold = 100; // Cần cuộn 100px mới bắt đầu ẩn
@@ -271,3 +268,116 @@ function showRegister() {
       document.getElementById('registerBox').style.display = 'none';
       document.getElementById('loginBox').style.display = 'block';
     }
+// --- PHẦN 4: LOGIC RENDER TRANG SHOP ---
+
+function loadShopDetails() {
+    // 1. Lấy ID từ URL (ví dụ: shop.html?id=fries_vietnam -> lấy được "fries_vietnam")
+    const params = new URLSearchParams(window.location.search);
+    const shopId = params.get('id');
+
+    // Nếu không có ID hoặc ID không tồn tại trong data
+    if (!shopId || !restaurants[shopId]) {
+        // Chỉ chạy logic này nếu đang ở trang shop.html
+        if(document.getElementById('shop-name')) {
+            alert("Không tìm thấy cửa hàng!");
+            window.location.href = 'index.html';
+        }
+        return;
+    }
+
+    const shopData = restaurants[shopId];
+
+    // 2. Điền thông tin vào Banner
+    if (document.getElementById('shop-name')) {
+        document.getElementById('shop-name').textContent = shopData.name;
+        document.getElementById('shop-address').textContent = shopData.address;
+        document.getElementById('shop-rating').textContent = shopData.rating;
+        document.getElementById('shop-time').textContent = `Giờ mở cửa: ${shopData.time}`;
+        document.getElementById('shop-price').textContent = shopData.priceRange;
+        document.getElementById('shop-logo').src = shopData.logo;
+        
+        // (Nâng cao) Thay đổi hình nền mờ phía sau nếu muốn
+        // document.querySelector('.banner-shop::before')... -> Cái này CSS phức tạp
+        // Cách đơn giản: set style inline cho biến CSS nếu bạn cấu hình lại CSS
+    }
+
+    // 3. Tạo danh sách món ăn (Render Menu)
+    const menuContainer = document.getElementById('menu-container');
+    if (menuContainer) {
+        menuContainer.innerHTML = ''; // Xóa nội dung cũ (nếu có)
+
+        shopData.menu.forEach(item => {
+            // Format giá tiền có dấu phẩy
+            const formattedPrice = item.price.toLocaleString('vi-VN');
+
+            // Tạo HTML cho từng món
+            const foodItemHTML = `
+            <div class="food">
+                <div class="box-food">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="food-name">
+                        <h4>${item.name}</h4>
+                        <p>${formattedPrice}đ</p>
+                    </div>
+                    <button class="btn-order"
+                            data-id="${item.id}"
+                            data-name="${item.name}"
+                            data-price="${item.price}" 
+                            data-img="${item.img}">
+                        <b><i class="ri-add-large-line"></i></b>
+                    </button>
+                </div>
+            </div>
+            `;
+            // Cộng chuỗi HTML vào container
+            menuContainer.innerHTML += foodItemHTML;
+        });
+        
+        // QUAN TRỌNG: Sau khi tạo nút HTML mới, phải gắn lại sự kiện click cho nút đó
+        // Gọi lại hàm gắn sự kiện trong logic giỏ hàng của bạn
+        reattachCartEvents();
+    }
+}
+
+// Hàm phụ trợ để gắn lại sự kiện click cho các nút mới sinh ra
+function reattachCartEvents() {
+    const addToCartButtons = document.querySelectorAll('.btn-order');
+    addToCartButtons.forEach(button => {
+        // Xóa sự kiện cũ để tránh bị double (nếu cần)
+        // Ở đây đơn giản là add mới
+        button.addEventListener('click', () => {
+            const product = {
+                id: button.dataset.id,
+                name: button.dataset.name,
+                price: parseInt(button.dataset.price),
+                img: button.dataset.img
+            };
+            addToCart(product);
+        });
+    });
+}
+
+// GỌI HÀM KHI TRANG TẢI
+document.addEventListener('DOMContentLoaded', () => {
+    // ... các code cũ ...
+    
+    // Thêm dòng này:
+    loadShopDetails();
+});
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartIcon();
+
+    // Nếu đang ở trang giỏ hàng thì hiển thị
+    if (document.querySelector('.cart-items')) {
+        displayCartItems();
+    }
+
+    // Gọi hàm load shop (nó sẽ tự tạo HTML món ăn và gắn sự kiện click luôn)
+    loadShopDetails();
+    
+    // Nếu KHÔNG PHẢI trang shop (ví dụ trang chủ có nút mua nhanh), 
+    // thì vẫn cần gắn sự kiện cho các nút có sẵn
+    if (!document.getElementById('menu-container')) {
+         reattachCartEvents();
+    }
+});
