@@ -288,6 +288,9 @@ function loadShopDetails() {
     const shopData = restaurants[shopId];
 
     // 2. Điền thông tin vào Banner
+    // Trong file main.js, bên trong hàm loadShopDetails()
+
+    // ... (đoạn code điền tên, địa chỉ ở trên giữ nguyên) ...
     if (document.getElementById('shop-name')) {
         document.getElementById('shop-name').textContent = shopData.name;
         document.getElementById('shop-address').textContent = shopData.address;
@@ -296,9 +299,13 @@ function loadShopDetails() {
         document.getElementById('shop-price').textContent = shopData.priceRange;
         document.getElementById('shop-logo').src = shopData.logo;
         
-        // (Nâng cao) Thay đổi hình nền mờ phía sau nếu muốn
-        // document.querySelector('.banner-shop::before')... -> Cái này CSS phức tạp
-        // Cách đơn giản: set style inline cho biến CSS nếu bạn cấu hình lại CSS
+        // --- ĐOẠN CODE MỚI CẦN THÊM VÀO ĐÂY ---
+        // Kiểm tra xem trong data.js quán này có bannerBg không
+        if (shopData.bannerBg) {
+            const bannerElement = document.getElementById('shop-banner');
+            // Gán giá trị đường dẫn ảnh vào biến CSS --bg-image
+            bannerElement.style.setProperty('--bg-image', `url('${shopData.bannerBg}')`);
+        }
     }
 
     // 3. Tạo danh sách món ăn (Render Menu)

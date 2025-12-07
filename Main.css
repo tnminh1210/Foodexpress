@@ -127,15 +127,19 @@ body{
 }
 
 /* blurred background only (does not affect children) */
-.banner-shop::before{
+/* Trong file Main.css */
+.banner-shop::before {
   content: "";
   position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  /* dark overlay on top of image improves contrast; adjust alpha as needed */
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/fries.jpg') center/cover no-repeat;
+  inset: 0;
+  /* CŨ: background: linear-gradient(...), url('img/fries.jpg') ... */
+  
+  /* MỚI: Dùng biến var(--bg-image) và để img/fries.jpg làm mặc định */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--bg-image, url('img/fries.jpg')) center/cover no-repeat;
+  
   filter: blur(4px);
-  transform: scale(1.05); /* hide blurred edges */
-  z-index: -1; /* keep behind content */
+  transform: scale(1.05);
+  z-index: -1;
 }
 
 /* ensure banner children stay above the pseudo-element */
