@@ -1,40 +1,81 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
+    <!--
+      Phần <head> (Ghi chú bằng tiếng Việt):
+      - <!DOCTYPE html> khai báo HTML5.
+      - lang="vi" đặt ngôn ngữ tài liệu là tiếng Việt.
+      - <meta charset="UTF-8"> đảm bảo mã hoá ký tự hỗ trợ tiếng Việt.
+      - <meta name="viewport"> giúp trang hiển thị phù hợp trên thiết bị di động.
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giỏ Hàng</title>
+
+    <!-- Liên kết tới các file CSS -->
     <link rel="stylesheet" href="Main.css">
     <link rel="stylesheet" href="Base.css">
+    <!-- Sử dụng Remix Icon (đã dùng các lớp ri-...) -->
     <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"/>
     <link rel="stylesheet" href="Responsive.css">
 
+    <!--
+      Lưu ý:
+      - Trong file có dùng icon của Font Awesome trước đây (fa-solid), nhưng không include Font Awesome.
+        Mình đã thay bằng icon của Remix Icon ở phần body để đồng bộ.
+      - Nếu muốn hỗ trợ người dùng tiếng Việt hoàn toàn, đặt lang="vi" (đã đổi).
+    -->
   </head>
 <body>
+    <!-- Header (thương hiệu, tìm kiếm, liên kết điều hướng) -->
     <div class="header">
       <div class="brand">
+        <!--
+          Thương hiệu:
+          - Link về trang chủ (index.html).
+          - Ảnh logo có alt mô tả bằng tiếng Việt để hỗ trợ truy cập.
+        -->
         <a href="index.html">
-        <img src="img/logo.png" alt="logo">
-        <h1>Food Express</h1>
+          <img src="img/logo.png" alt="Logo Food Express">
+          <h1>Food Express</h1>
         </a>
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Tìm kiếm cửa hàng, món ăn..." />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-      <div class="nav-links">
-  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
 
-  <a href="cart.html" class="cart-icon"> 
-    <i class="ri-shopping-bag-line"></i> Giỏ hàng
-    <span class="cart-count">0</span>
-  </a>
-  </div>
+      <div class="search-bar">
+        <!--
+          Thanh tìm kiếm:
+          - Placeholder bằng tiếng Việt: "Tìm kiếm cửa hàng, món ăn..."
+          - Icon tìm kiếm đổi sang Remix Icon (ri-search-line) để hoạt động với Remix.
+          - Nên bọc input trong <form role="search"> nếu muốn gửi tìm kiếm.
+        -->
+        <input type="text" placeholder="Tìm kiếm cửa hàng, món ăn..." />
+        <i class="ri-search-line"></i>
+      </div>
+
+      <div class="nav-links">
+        <!--
+          Các liên kết điều hướng:
+          - "Tài Khoản" dẫn tới trang đăng nhập.
+          - Biểu tượng giỏ hàng hiển thị số lượng trong .cart-count (JS sẽ cập nhật).
+        -->
+        <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+
+        <a href="cart.html" class="cart-icon"> 
+          <i class="ri-shopping-bag-line"></i> Giỏ hàng
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
 
+    <!-- Khu vực giỏ hàng -->
     <div class="cart">
+        <!--
+          Dòng tiêu đề của bảng giỏ hàng:
+          - Nên cân nhắc dùng bảng <table> hoặc thêm thuộc tính ARIA để cải thiện truy cập.
+        -->
         <div class="cart-header">
             <span>Sản phẩm</span>
             <span>Giá</span>
@@ -42,60 +83,88 @@
             <span>Tổng cộng</span>
             <span>Xóa</span>
         </div>
+
+        <!--
+          Đây là nơi các mục trong giỏ (item) sẽ được chèn vào bởi main.js.
+          Ban đầu để trống.
+        -->
         <div class="cart-items">
-            </div>
+        </div>
+
+        <!-- Tổng tiền / tóm tắt -->
         <div class="cart-total">
-        <h3>Tổng tiền</h3>
-        <p>Phụ thu <span class="subtotal">0đ</span></p>
-        <p>Phí vận chuyển <span>Free</span></p>
-        <p>Thành tiền <span class="grand-total">0đ</span></p>
-        <button class="checkout-btn">Thanh Toán</button>
+          <h3>Tổng tiền</h3>
+          <!--
+            .subtotal và .grand-total là chỗ main.js sẽ cập nhật giá trị (đã hiển thị "0đ" mặc định)
+            Chuyển "Free" thành "Miễn phí" để nhất quán tiếng Việt.
+          -->
+          <p>Phụ thu <span class="subtotal">0đ</span></p>
+          <p>Phí vận chuyển <span>Miễn phí</span></p>
+          <p>Thành tiền <span class="grand-total">0đ</span></p>
+          <button class="checkout-btn">Thanh Toán</button>
+        </div>
     </div>
 
-</div>
+    <!--
+      Footer: Đã di chuyển vào bên trong <body> (trước khi đóng body) — trước đây footer nằm ngoài </body>, đó là lỗi cấu trúc.
+      Phần footer chứa thông tin liên hệ, liên kết ứng dụng và thông tin công ty.
+    -->
+    <footer>
+      <div class="footer">
+          <section>
+            <div class="logo">
+              <img src="img/logo.png" alt="Logo Food Express">
+              <h1>Food Express</h1>
+            </div>
+            <ul class="unlist">
+              <!-- Thông tin liên hệ & mạng xã hội -->
+              <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
+              <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
+              <li><i class="ri-map-pin-fill"></i> TP. Thủ Đức, TP. Hồ Chí Minh</li>
+              <li><i class="ri-facebook-circle-fill"></i> Food Express Việt Nam</li>
+              <li><i class="ri-instagram-fill"></i> FoodExpress</li>
+            </ul>
+          </section>
 
+          <section>
+            <div class="app">
+              <h1>Ứng dụng Food Express</h1>
+              <!--
+                Dịch tên cửa hàng ứng dụng sang tiếng Việt để nhất quán:
+                - "App Store" -> "Cửa hàng App"
+                - "Google Play" -> "CH Play"
+              -->
+              <p><a href="#"><i class="ri-apple-fill"></i> Cửa hàng App</a></p>
+              <p><a href="#"><i class="ri-google-play-fill"></i> CH Play</a></p>
+            </div>
+          </section>
+
+          <section>
+            <div class="company-footer">
+              <h1>Công ty</h1>
+              <!-- Các liên kết công ty (vẫn là # placeholder) -->
+              <p><a href="#">Giới thiệu</a></p>
+              <p><a href="#">Trung tâm trợ giúp</a></p>
+              <p><a href="#">Quy chế</a></p>
+              <p><a href="#">Điều khoản sử dụng</a></p>
+              <p><a href="#">Bảo mật thông tin</a></p>
+              <p><a href="#">Giải quyết khiếu nại</a></p>
+              <p><a href="#">Hợp tác nhân viên giao nhận</a></p>
+              <p><a href="#">Đăng ký quán</a></p>
+            </div>
+          </section>
+      </div>
+
+      <div class="copyright">
+        <p>© 2024 Food Express. Bảo lưu mọi quyền.</p>
+      </div>
+    </footer>
+
+    <!--
+      File JavaScript chính:
+      - main.js chịu trách nhiệm cập nhật .cart-items, .cart-count, .subtotal, .grand-total, xử lý xóa, tăng/giảm số lượng, xử lý thanh toán...
+      - Đảm bảo đường dẫn main.js đúng và file có logic tương ứng.
+    -->
+    <script src="main.js"></script>
 </body>
-<footer>
-    <div class="footer">
-        <section>
-          <div class="logo">
-            <img src="img/logo.png" alt="logo">
-            <h1>Food Express</h1>
-          </div>
-          <ul class="unlist">
-            <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
-            <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
-            <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
-            <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
-            <li><i class="ri-instagram-fill"></i> FoodExpress</li>
-          </ul>
-        </section>
-        <section>
-          <div class="app">
-            <h1>Ứng dụng Food Express</h1>
-            <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
-            <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
-              
-              
-          </div>
-        </section>
-        <section>
-          <div class="company-footer">
-            <h1>Công ty</h1>
-            <p><a href="#">Giới thiệu</a></p>
-            <p><a href="#">Chung Tâm trợ giúp</a></p>
-            <p><a href="#">Quy chế</a></p>
-            <p><a href="#">Điều khoản sử dụng</a></p>
-            <p><a href="#">Bảo mật thông tin</a></p>
-            <p><a href="#">Giải quyết khiếu nại</a></p>
-            <p> <a href="#">Hợp tác nhân viên giao nhận</a></p>
-            <p><a href="#">Đăng kí quán</a></p>
-          </div>
-        </section>
-    </div>
-    <div class="copyright">
-      <p>© 2024 Food Express. All rights reserved.</p>
-  </footer>
-  <script src="main.js"></script>
-  <script src="data.js"></script>
 </html>

@@ -1,4 +1,12 @@
-/* Thêm 4 DÒNG NÀY vào đầu file Base.css */
+
+/* 
+  Thêm 4 DÒNG NÀY vào đầu file Base.css
+  Mục đích: đảm bảo layout có chiều cao đầy đủ của viewport
+  - html { height: 100%; } -> để phần tử gốc có chiều cao 100% của cửa sổ trình duyệt.
+  - body { min-height: 100%; display: flex; flex-direction: column; } -> biến body thành flex container theo cột,
+    cho phép footer "đẩy" xuống đáy bằng margin-top: auto; (sticky footer pattern).
+  - footer { margin-top: auto; } -> đẩy footer về phía cuối của trang khi nội dung ít.
+*/
 html {
     height: 100%;
 }
@@ -8,30 +16,57 @@ body {
     flex-direction: column;
 }
 footer {
-    margin-top: auto; /* Đây là dòng quan trọng nhất */
+    margin-top: auto; /* Đây là dòng quan trọng nhất: làm footer luôn nằm cuối khi nội dung không đủ dài */
 }
+
 /* Giữ nguyên phần còn lại của Base.css */
+
+/* Header - logo ảnh
+   .header img: điều chỉnh kích thước logo trong header
+   - width: 90px giới hạn chiều rộng
+   - height: auto giữ tỉ lệ ảnh
+   - object-fit: contain: đảm bảo ảnh được co/giãn phù hợp trong khung mà không bị cắt
+*/
 .header img{
     width: 90px ;
     height: auto;
     object-fit: contain;
 }
+
+/* .brand: chứa logo + tên thương hiệu
+   - display:flex để canh giữa theo trục ngang
+   - align-items: center để canh theo trục dọc
+   - gap: khoảng cách giữa các item
+*/
 .brand{
     display: flex;
     align-items: center;
     gap: 12px;
 }
+
+/* .brand a: khi tên/ảnh bọc trong <a>, bỏ gạch chân mặc định và dùng flex để canh nội dung */
 .brand a{
     text-decoration: none;
     display: flex;
     align-items: center;
 }
-.brand h1{
 
+/* .brand h1: kiểu chữ gradient cho tên thương hiệu
+   - background-clip + -webkit-text-fill-color để hiện gradient trên text (webkit required)
+*/
+.brand h1{
     background: linear-gradient(45deg, #FFA726, #EF5350);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;    
 }
+
+/* .search-bar: thanh tìm kiếm
+   - color: text màu đen
+   - display:flex để canh input ở giữa
+   - background-color: xám nhạt cho vùng tìm kiếm
+   - width: 50% chiếm nửa vùng chứa (có thể điều chỉnh responsive)
+   - padding + border-radius để tạo diện mạo mềm mại
+*/
 .search-bar{
     color: black;
     display: flex;
@@ -43,6 +78,10 @@ footer {
     justify-content: center;
     border-radius: 10px;
 }
+
+/* .search-bar input: style cho input bên trong
+   - làm cho input hòa vào nền bằng màu giống background, xóa border/outline
+*/
 .search-bar input{
     background-color: #D1D1D1;
     width: 100%;
@@ -50,14 +89,23 @@ footer {
     border: none;
     outline: none;
 }
+
+/* .nav-links: thanh điều hướng - hiển thị các link theo hàng ngang với gap giữa các mục */
 .nav-links {
     display: flex;
     gap: 20px
 }
+
+/* .nav-links i: các icon trong nav được phóng to và in đậm */
 .nav-links i{
     font-size: larger;
     font-weight: bold;
 }
+
+/* .nav-links a: style cho từng link
+   - xóa gạch chân, màu đen, bo góc và padding để tạo button-like appearance
+   - border: dùng biến CSS --header-border-color nếu có, fallback rgba
+*/
 .nav-links a {
     text-decoration: none;
     color: black;
@@ -65,16 +113,34 @@ footer {
     padding: 10px;
     border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
 }
+
+/* .nav-links a:hover: hiệu ứng khi hover - chuyển nền thành gradient và chữ màu trắng */
 .nav-links a:hover {
     background: linear-gradient(45deg, #FFA726, #EF5350);
     color: white;
 }
 
-/* THAY THẾ .nav-links span TRONG Base.css BẰNG KHỐI NÀY */
+/* 
+  THAY THẾ .nav-links span TRONG Base.css BẰNG KHỐI NÀY
+  Hàm ý: phần hiển thị icon giỏ hàng và số lượng (badge)
+*/
+
+/* .cart-icon:
+   - position: relative để phần tử con có thể dùng position: absolute căn chỉnh dựa trên .cart-icon
+   - thường áp dụng cho thẻ <a> bọc icon giỏ hàng
+*/
 .cart-icon {
   position: relative; /* Thẻ <a> làm gốc */
 }
 
+/* .cart-count: badge hiển thị số lượng sản phẩm
+   - position: absolute để đặt nổi lên trên góc phải của icon
+   - top/right căn chỉnh vị trí badge so với .cart-icon
+   - background-color red, text trắng, border-radius 50% để làm badge tròn
+   - padding & font-size điều chỉnh kích thước
+   - min-width & text-align để đảm bảo số có thể hiển thị đẹp
+   - left: auto; dùng để xóa/override các thiết lập left cũ nếu có
+*/
 .cart-count {
   position: absolute; /* Thẻ <span> làm con */
   top: -8px;
@@ -93,10 +159,17 @@ footer {
   /* Xóa các thuộc tính 'position: relative' cũ */
   left: auto; 
 }
+
+/* .navigation: links trong sidebar hoặc menu chính - xóa gạch chân và đặt màu mặc định */
 .navigation a{
     text-decoration: none;
     color: black;
 }
+
+/* .navigation p: các mục menu kiểu khối
+   - padding và border-radius để tạo vùng bấm
+   - cursor pointer để chỉ interactivity
+*/
 .navigation p {
     padding: 20px;
     border-radius: 20px;
@@ -104,17 +177,30 @@ footer {
     color: black;
     text-decoration: none;
 }
+
+/* .navigation p.active: state active của menu - dùng gradient nổi bật */
 .navigation p.active {
     background: linear-gradient(45deg, #FFA726, #EF5350);
 }
+
+/* .navigation p:hover: hiệu ứng phóng to nhẹ khi hover, kèm transition mịn */
 .navigation p:hover {
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
+
+/* .arrange-shop a: link trong phần sắp xếp cửa hàng - giống kiểu link cơ bản */
 .arrange-shop a{
     text-decoration: none;
     color: black;
 }
+
+/* .box-shop h3/p/img/a: khối hiển thị thông tin cửa hàng
+   - h3: tiêu đề từng box
+   - p: mô tả màu xám
+   - img: ảnh banner/nổi bật với border-radius trên và border-bottom để phân tách
+   - a: block-level link để toàn bộ box có thể click được
+*/
 .box-shop h3{
     margin: 10px;
     color: black;
@@ -136,11 +222,17 @@ footer {
     color: inherit;
     text-decoration: none;
 }
+
+/* #fit-img: id dùng cho ảnh lớn (banner/menu image)
+   - đặt chiều cao cố định để giữ layout; object-fit: cover để cắt ảnh đầy khung mà vẫn giữ tỷ lệ
+*/
 #fit-img {
-    height: 340px;
-    width: 100%;
+    height: 400px;
+    min-height: 350px;
     object-fit: cover;
 }
+
+/* .logo: container logo */
 .logo{
     display: flex;
 }
@@ -154,6 +246,10 @@ footer {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;  
 }
+
+/* .unlist: reset list-style để tạo danh sách không có bullet
+   - dùng cho sidebar hoặc danh sách tính năng
+*/
 .unlist{
     list-style-type: none;
 }
@@ -161,11 +257,18 @@ footer {
     margin-bottom: 20px;
 }
 .unlist i{
+    /* Các icon trong danh sách dùng gradient màu cho hiệu ứng thẩm mỹ */
     background: linear-gradient(45deg, #FFA726, #EF5350);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: large;
 }
+
+/* .app: phần giới thiệu ứng dụng
+   - h1 có margin-bottom lớn để tách khỏi phần tiếp theo
+   - p: text lớn, màu trắng (thường nằm trên background màu)
+   - a: nút tải app màu đen chữ trắng
+*/
 .app h1{
     margin-bottom: 50px;
 }
@@ -184,9 +287,16 @@ footer {
 .app i{
     font-size: larger;
 }
+
+/* company-footer a: link trong footer công ty - xóa gạch chân */
 .company-footer a{
     text-decoration: none;
 }
+
+/* .copyright: phần bản quyền ở cuối footer
+   - căn giữa, padding để tạo không gian
+   - border-top tách phần này ra khỏi nội dung footer
+*/
 .copyright{
     text-align: center;
     padding: 20px;
@@ -194,6 +304,11 @@ footer {
     margin-top: 20px;
     color: gray;
 }
+
+/* .banner-shop img: ảnh banner nhỏ bên shop
+   - width/height cố định, margin để đặt vị trí, border-radius cho góc mềm
+   - object-fit: cover để ảnh phủ đầy khung nhưng có thể bị cắt
+*/
 .banner-shop img{
     width: 280px ;
     height: 300px;
@@ -204,6 +319,9 @@ footer {
     border-radius: 20px;
     object-fit: cover;
 }
+
+/* .font-banner: text overlay/tiêu đề trên banner
+   - padding và màu chữ trắng, hiển thị block để dễ canh */
 .font-banner{
     padding: 0px 20px;
     color: white;
@@ -213,9 +331,17 @@ footer {
 .font-banner i{
     color: yellow;
 }
+
+/* .menu h1: tiêu đề menu, margin để tạo khoảng cách xung quanh */
 .menu h1{
     margin: 50px 70px 20px 70px;
 }
+
+/* .food: container danh sách món
+   - display: block (mặc định)
+   - margin lớn bên trái/phải để căn giữa vùng nội dung
+   - border + box-shadow để tạo thẻ nổi
+*/
 .food{
     display: block;
     margin-left: 60px;
@@ -225,6 +351,11 @@ footer {
     border: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
+/* .box-food: mỗi thẻ món ăn
+   - position: relative để có thể đặt nút order tuyệt đối bên trong
+   - display:flex để đặt ảnh và thông tin nằm ngang
+*/
 .box-food{
     position: relative;
     display: flex;
@@ -236,12 +367,24 @@ footer {
     border-radius: 10px;
     object-fit: cover;
 }
+
+/* .food-name: phần chứa tên, mô tả, giá
+   - margin-left để tách khỏi ảnh
+   - flex-direction: column để các thông tin xếp theo cột
+*/
 .food-name{
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     font-size: large;
 }
+
+/* .btn-order: nút đặt hàng dạng tròn
+   - background gradient, chữ trắng
+   - border-radius: 100% => vòng tròn
+   - width/height bằng nhau, font-size lớn cho biểu tượng + cursor pointer
+   - position: absolute, bottom/right để hiển thị chồng lên góc thẻ món
+*/
 .btn-order {
     background: linear-gradient(45deg, #FFA726, #EF5350);
     color: white;
@@ -255,45 +398,71 @@ footer {
     bottom: 10px;
     right: 10px;
 }
+/* hover effect: phóng to nhẹ khi hover */
 .btn-order:hover {
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
 
+/* Cart (giỏ hàng) styles */
+
+/* .cart-header: hàng tiêu đề cột trong giỏ hàng
+   - display:flex để chia cột
+   - padding + font-weight bold cho nhãn
+   - border-bottom để phân tách
+*/
 .cart-header{
   display: flex;
   padding: 10px 0;
   font-weight: bold;
   border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
 }
+/* .cart-header span: mỗi span chiếm 1 phần bằng nhau, text-align center */
 .cart-header span{
   flex: 1;
   text-align: center;
 }
+/* .cart-header span:first-child: cột đầu (product) rộng hơn (flex:2) và căn trái */
 .cart-header span:first-child{
   flex: 2;
   text-align: left;
 }
+
+/* .cart-item: mỗi dòng sản phẩm trong giỏ
+   - display:flex để sắp xếp ảnh/tên/giá/số lượng theo hàng
+   - align-items:center canh theo trục dọc
+   - border-bottom tách từng item
+*/
 .cart-item{
     display: flex;
     align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
 }
+/* .cart-item .product: vùng chứa ảnh + tên, chiếm 2 phần flex */
 .cart-item .product{
     display: flex;
     align-items: center;
     flex: 2;
 }
+/* .cart-item img: ảnh sản phẩm nhỏ, bo góc */
 .cart-item img{
     width: 80px;
     margin-right: 15px;
     border-radius: 5px;
 }
+/* .cart-item :is(.price, .quantity, .total-price):
+   - sử dụng :is() để chỉ định cùng style cho các cột price/quantity/total-price
+   - flex:1 để chia đều không gian và text-align:center
+*/
 .cart-item :is(.price, .quantity, .total-price){
     flex: 1;
     text-align: center;
 }
+/* .cart-item .quantity input: ô nhập số lượng
+   - kích thước nhỏ cố định, outline none, padding, border và bo góc
+   - text-align center để số nằm giữa ô
+*/
 .cart-item .quantity input{
     width: 50px;
     outline: none;
@@ -302,6 +471,7 @@ footer {
     border-radius: 5px;
     text-align: center;
 }
+/* .cart-item .remove: nút xóa sản phẩm (gốc là nút trống) */
 .cart-item .remove{
     flex: 1;
     background: transparent;
@@ -312,10 +482,15 @@ footer {
     color: #333;
     cursor: pointer;
 }
+/* hover đổi màu icon xóa thành đỏ */
 .cart-item .remove i:hover{
     color: red;
     transition: all 0.3s ease-in-out;
 }
+
+/* .cart-total: khối tóm tắt thanh toán
+   - width cố định và margin-top lớn, margin-left:auto để canh phải (đặt ở bên phải bảng)
+*/
 .cart-total {
     width: 400px;
     margin: 50px 0 0 auto;
@@ -323,20 +498,27 @@ footer {
 .cart-total h3 {
     margin-bottom: 15px;
 }
+/* p bên trong cart-total dùng flex để hiển thị label và giá ở hai đầu */
 .cart-total p{
     display: flex;
     justify-content: space-between;
 }
+/* Các dòng trừ dòng cuối được phân tách bằng border-bottom */
 .cart-total p:not(:last-of-type){
     border-bottom: 1px solid var(--header-border-color, rgba(0,0,0,0.12));
     padding-bottom: 8px;
     margin-bottom: 8px;
 }
+/* dòng cuối trọng lượng font to và in đậm */
 .cart-total p:last-of-type{
     font-weight: bold;
     font-size: 20px;
 }
 
+/* .checkout-btn: nút thanh toán
+   - chiếm toàn bộ chiều ngang khối cart-total
+   - gradient nền, chữ trắng, bo góc và padding để dễ bấm
+*/
 .cart-total .checkout-btn {
     display: block;
     width: 100%;
@@ -349,58 +531,4 @@ footer {
     font-size: large;
     cursor: pointer;
     margin-top: 20px;
-}
-.container input {
-    width: 90%;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    transition: transform 0.3s;
-}
-.container input:focus {
-    transform: scale(1.05);
-    border-color: #ff3d00;
-}
-.container button {
-    width: 100%;
-    padding: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: #ff3d00;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.container button:hover {
-    background-color: #e63300;
-    transform: scale(1.03);
-}
-.switch {
-    margin-top: 15px;
-    color: #444;
-    font-size: 14px;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-    animation-delay: 0.4s;
- }
-.switch span {
-    color: #ff3d00;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-@keyframes fadeIn {
-    to {
-    opacity: 1;
-    transform: translateY(0);
-    }
-}
-
-.container a {
-    text-decoration: none;
-    font-size:xx-large;
 }

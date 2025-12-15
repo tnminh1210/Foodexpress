@@ -1,9 +1,24 @@
 /* --- NỘI DUNG CỦA FILE Responsive.css --- */
 
+/* 
+  Ghi chú tổng quát:
+  - File này chứa CSS responsive, áp dụng khi kích thước màn hình <= 800px.
+  - Mục đích: điều chỉnh layout để hiển thị tốt trên điện thoại và các thiết bị nhỏ.
+  - Tôi sẽ thêm các chú thích (note) trực tiếp bên dưới để giải thích từng phần.
+*/
+
 /* Áp dụng các quy tắc này khi màn hình rộng 800px trở xuống */
 @media (max-width: 800px) {
 
     /* --- Sửa Header --- */
+    /* 
+      Giải thích:
+      - .header: cho phép các mục con (brand, nav-links, search-bar...) xuống dòng
+        bằng cách bật flex-wrap, giảm padding và tạo khoảng cách nhỏ giữa các mục.
+      - .search-bar: đặt rộng 100% để chiếm toàn bộ hàng, và order:3 để xuất hiện sau
+        các mục khác khi xuống dòng.
+      - .brand và .nav-links: đặt order để kiểm soát thứ tự xuất hiện khi wrap.
+    */
     .header {
         flex-wrap: wrap; /* Cho phép các mục xuống dòng */
         padding: 20px; /* Giảm lề */
@@ -13,10 +28,15 @@
         width: 100%;  /* Thanh tìm kiếm 100% */
         order: 3;     /* Đẩy xuống cuối */
     }
-    .brand { order: 1; }
-    .nav-links { order: 2; }
+    .brand { order: 1; } /* Thương hiệu xuất hiện đầu */
+    .nav-links { order: 2; } /* Liên kết điều hướng xuất hiện giữa */
 
     /* --- Sửa Navigation (Thức ăn, Nước uống...) --- */
+    /*
+      Giải thích:
+      - .navigation chuyển sang cột để các mục điều hướng xếp dọc, dễ thao tác trên màn nhỏ.
+      - .navigation p: đặt rộng 100%, căn giữa text, thêm shadow và bo góc để giống nút dạng card.
+    */
     .navigation {
         flex-direction: column; /* Xếp chồng lên nhau */
         margin: 20px;
@@ -30,15 +50,30 @@
     }
 
     /* --- Sửa Slider (Ảnh bìa) --- */
+    /*
+      Giải thích:
+      - Giảm chiều cao slider vì màn nhỏ không cần banner cao.
+      - .slide img sử dụng object-fit: contain để toàn bộ ảnh hiển thị (không cắt),
+        và nền màu sáng để tránh vùng trống trông khó chịu.
+    */
     .slider {
         height: 300px; /* Giảm chiều cao banner */
     }
     .slide img {
-    object-fit: contain; /* Sửa từ 'cover' thành 'contain' */
-    background-color: #f0f0f0; /* Thêm màu nền cho đỡ trống */
-}
+        object-fit: contain; /* Sửa từ 'cover' thành 'contain' -> không cắt ảnh */
+        background-color: #f0f0f0; /* Thêm màu nền cho đỡ trống */
+    }
 
     /* --- Sửa Layout chính (Home) --- */
+    /*
+      Giải thích:
+      - .restaurant, .footer: giảm margin để tiết kiệm không gian.
+      - .arrange-shop: chuyển sang cột để mỗi cửa hàng nằm trên một hàng,
+        thêm gap để tách rời các card.
+      - .box-shop: cho chiều rộng 100% nhưng giới hạn max-width để không quá rộng,
+        height:auto để chiều cao tự điều chỉnh, margin auto để căn giữa.
+      - #fit-img: giảm chiều cao ảnh hiển thị trong card.
+    */
     .restaurant, .footer {
         margin: 20px; /* Giảm lề (từ 100px xuống 20px) */
     }
@@ -58,6 +93,20 @@
     }
     
     /* --- Sửa Layout trang Shop (Cửa hàng) --- */
+    /*
+      Giải thích:
+      - .menu: giảm margin chung.
+      - .banner-shop: xếp logo và chữ theo cột, padding trên/dưới để tạo khoảng cách.
+      - .banner-shop img: giảm kích thước logo để phù hợp với màn nhỏ.
+      - .font-banner: căn giữa chữ, giảm kích thước phông.
+      - .food: giảm margin trên/dưới.
+      - .box-food: xếp ảnh và mô tả theo cột, căn giữa nội dung, và thêm bottom padding
+        để có không gian cho nút thêm (nếu trước đây nút nổi lên).
+      - .box-food img: chiếm 90% chiều ngang khối, chiều cao tự động để giữ tỉ lệ.
+      - .food-name: xóa margin trái, căn giữa text.
+      - .btn-order: bỏ position:absolute (nếu có) để nút nằm theo luồng, mở rộng chiều ngang
+        và bo góc để dễ bấm trên cảm ứng.
+    */
     .menu {
         margin: 20px; /* Giảm lề (từ 200px xuống 20px) */
     }
@@ -92,13 +141,25 @@
         margin-top: 10px;
     }
     .btn-order {
-        position: static; /* Bỏ định vị tuyệt đối */
+        position: static; /* Bỏ định vị tuyệt đối -> nút theo luồng */
         width: 90%;
         margin-top: 15px;
         border-radius: 10px;
     }
 
     /* --- Sửa Layout trang Cart (Giỏ hàng) --- */
+    /*
+      Giải thích:
+      - .cart: giảm padding để giỏ hàng không chiếm quá nhiều không gian.
+      - Biến bảng giỏ hàng (nhiều cột) thành dạng danh sách (card) cho dễ đọc trên mobile:
+        + Ẩn header bảng (.cart-header).
+        + .cart-item chuyển sang cột, căn trái, thêm padding/shadow/bo góc như card.
+        + Các con của .cart-item được ép chiếm 100% để mỗi dòng chứa 1 nội dung.
+        + Sử dụng pseudo-content (::before) để thêm "nhãn giả" (Giá, Số lượng, Tổng)
+          vì header bị ẩn.
+        + Điều chỉnh input số lượng, nút xóa để dễ thao tác trên màn nhỏ.
+        + .cart-total chiếm 100% thể hiện tổng tiền dưới dạng block.
+    */
     .cart {
         padding: 20px; /* Giảm lề (từ 110px và 9%) */
     }
@@ -120,7 +181,7 @@
     .cart-item > * {
         flex-basis: 100%;
         width: 100%;
-        text-align: left !important; /* Ghi đè căn giữa */
+        text-align: left !important; /* Ghi đè căn giữa nếu có */
     }
     /* Thêm "giả" tiêu đề cho dễ đọc */
     .cart-item .price::before { content: "Giá: "; font-weight: bold; }
@@ -128,17 +189,17 @@
     .cart-item .total-price::before { content: "Tổng: "; font-weight: bold; }
     
     .cart-item .quantity input {
-        width: 60px;
+        width: 60px; /* Kích thước input hợp lý cho mobile */
     }
     .cart-item .remove {
         text-align: center !important;
-        background-color: #f8f8f8;
+        background-color: #f8f8f8; /* Nền nhẹ cho nút xóa */
         padding: 10px;
         border-radius: 5px;
         margin-top: 10px;
     }
     .cart-total {
         width: 100%; /* Tổng tiền 100% */
-        margin: 20px 0 0 0; /* Xóa margin cũ */
+        margin: 20px 0 0 0; /* Xóa margin cũ, để sát dưới danh sách */
     }
 }
