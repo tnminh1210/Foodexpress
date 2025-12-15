@@ -1,60 +1,127 @@
 <!DOCTYPE html>
 <html lang="vn">
 <head>
+    <!--
+      Ghi chú: đặt charset, viewport và title ở phần <head> giúp trình duyệt hiểu mã hóa ký tự,
+      hiển thị đúng trên thiết bị di động và định danh trang. `lang="vn"` cho biết ngôn ngữ
+      chính của tài liệu (tiếng Việt) — tốt cho SEO và trợ năng (screen readers).
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cửa hàng</title>
+
+    <!--
+      Kết nối tới stylesheet.
+      - Thứ tự các file CSS quan trọng vì CSS sau cùng có thể ghi đè (cascade) lên trước.
+      - Hiện file load: Main.css trước, Base.css sau — nếu Base.css là kiểu reset/base thì nên load trước
+        và Main.css sau để Main.css ghi đè. Ở đây giữ nguyên nhưng cần lưu ý thứ tự theo ý đồ thiết kế.
+    -->
     <link rel="stylesheet" href="Main.css">
     <link rel="stylesheet" href="Base.css">
+
+    <!--
+      Remixicon cung cấp các biểu tượng (icon) được sử dụng trong HTML (lớp ri-...).
+      Thêm link tới bộ icon để các <i class="ri-..."> hiển thị đúng.
+    -->
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
     rel="stylesheet"
-/>
-<link rel="stylesheet" href="Responsive.css">
+    />
+
+    <link rel="stylesheet" href="Responsive.css">
+
+    <!--
+      LƯU Ý: Trong file HTML này còn dùng các lớp icon `fa-solid` (Font Awesome).
+      Tuy file hiện tại chỉ import Remixicon; nếu muốn dùng `fa-solid` (Font Awesome)
+      cần thêm link/chunk của Font Awesome hoặc thay icon thành remix tương ứng.
+    -->
 </head>
 <body>
+    <!--
+      HEADER: phần điều hướng chính bao gồm logo, thanh tìm kiếm và liên kết điều hướng.
+      Đặt các phần hay dùng ở trên cùng để người dùng tìm thấy nhanh (mobile-first cũng vậy).
+    -->
     <div class="header">
       <div class="brand">
+        <!--
+          Logo + tên được bọc trong <a href="index.html"> để khi người dùng click sẽ quay về trang chủ.
+          Ảnh có thuộc tính alt để hỗ trợ người dùng dùng trình đọc màn hình và khi ảnh không tải.
+        -->
         <a href="index.html">
         <img src="img/logo.png" alt="logo">
         <h1>Food Express</h1>
         </a>
       </div>
+
       <div class="search-bar">
+        <!--
+          Thanh tìm kiếm: input text để người dùng nhập truy vấn.
+          Icon <i class="fa-solid fa-magnifying-glass"></i> hiển thị kính lúp nếu Font Awesome được nạp.
+          Nếu không sử dụng Font Awesome, nên dùng remixicon hoặc SVG để đảm bảo hiển thị.
+          Có thể thêm form/aria-label để cải thiện truy cập cho screen readers.
+        -->
         <input type="text" placeholder="Tìm kiếm cửa hàng, món ăn..." />
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
+
       <div class="nav-links">
-  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+        <!--
+          Liên kết điều hướng: tài khoản và giỏ hàng.
+          - class "cart-icon" và span.cart-count dùng để hiển thị số lượng sản phẩm trong giỏ (thường cập nhật bằng JS).
+          - Sử dụng <a> để dễ dàng điều hướng/SEO.
+        -->
+        <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
 
-  <a href="cart.html" class="cart-icon"> 
-    <i class="ri-shopping-bag-line"></i> Giỏ hàng
-    <span class="cart-count">0</span>
-  </a>
-  </div>
+        <a href="cart.html" class="cart-icon"> 
+          <i class="ri-shopping-bag-line"></i> Giỏ hàng
+          <span class="cart-count">0</span> <!--
+            Giá trị tĩnh 0 ở HTML là placeholder; JavaScript sẽ thay đổi nội dung này khi người dùng thêm sản phẩm.
+          -->
+        </a>
+      </div>
     </div>
+
+    <!--
+      SECTION: banner-shop hiển thị thông tin cửa hàng (logo, tên, địa chỉ, đánh giá, thời gian, mức giá).
+      Các phần tử có id (ví dụ id="shop-name") là điểm để JavaScript tìm và inject dữ liệu động.
+      Hình ảnh shop-logo có src rỗng — điều này ám chỉ JS sẽ set src dựa trên dữ liệu cửa hàng.
+    -->
     <section>
-    <div class="banner-shop" id="shop-banner">
-      <img src="" alt="logo" id="shop-logo"> 
-      <div class="font-banner">
-        <h1 id="shop-name"></h1>
-        <p id="shop-address"></p>
-        <p>
-            <i class="fa-solid fa-star"></i> 
-            <span id="shop-rating"></span> sao Đánh giá trên Food Express
-        </p> 
-        <p id="shop-time"></p>
-        <p><b id="shop-price"></b></p>
+      <div class="banner-shop" id="shop-banner">
+        <img src="" alt="logo" id="shop-logo"> 
+        <div class="font-banner">
+          <h1 id="shop-name"></h1>
+          <p id="shop-address"></p>
+          <p>
+              <i class="fa-solid fa-star"></i> 
+              <span id="shop-rating"></span> sao Đánh giá trên Food Express
+          </p> 
+          <p id="shop-time"></p>
+          <p><b id="shop-price"></b></p>
+        </div>
       </div>
-    </div>
-</section>
+    </section>
 
-<section class="menu">
-  <h1>Thực đơn</h1>
-  <div class="food-container" id="menu-container">
+    <!--
+      SECTION: menu (Thực đơn)
+      - Thẻ <h1> cho tiêu đề.
+      - div#menu-container là nơi JavaScript sẽ thêm các item món ăn (dynamic rendering).
+      - Việc tách phần HTML tĩnh và vùng chứa động giúp tái sử dụng template và cập nhật nội dung dễ dàng.
+    -->
+    <section class="menu">
+      <h1>Thực đơn</h1>
+      <div class="food-container" id="menu-container">
+        <!-- Các món ăn sẽ được render tại đây bởi main.js / data.js -->
       </div>
-</section>
+    </section>
 </body>
+
+<!--
+  CHÚ Ý CẤU TRÚC: footer nằm ngoài thẻ </body> — đây không hợp lệ theo chuẩn HTML.
+  Footer nên đặt bên trong <body> (trước khi đóng </body>). Hiện tại footer đã được thêm sau </body>,
+  nên cần di chuyển footer vào trước </body> để đảm bảo cấu trúc document hợp lệ.
+  (Tài liệu vẫn có thể hiển thị trên nhiều trình duyệt, nhưng không đúng chuẩn và có thể gây lỗi cho một số công cụ)
+-->
 <footer>
     <div class="footer">
         <section>
@@ -75,8 +142,6 @@
             <h1>Ứng dụng Food Express</h1>
             <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
             <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
-              
-              
           </div>
         </section>
         <section>
@@ -95,7 +160,16 @@
     </div>
     <div class="copyright">
       <p>© 2024 Food Express. All rights reserved.</p>
-  </footer>
-  <script src="main.js"></script>
-  <script src="data.js"></script>
+</footer>
+
+<!--
+  Script load:
+  - Thông thường nên nạp các file dữ liệu (data.js) trước khi file xử lý (main.js) nếu main.js sử dụng dữ liệu từ data.js.
+  - Ở đây thứ tự là main.js rồi data.js — nếu main.js phụ thuộc vào data.js, điều này sẽ gây lỗi.
+  - Ngoài ra, tải các script ở cuối tài liệu (trước </body>) giúp DOM load nhanh hơn trước khi script chạy.
+  - Cũng cân nhắc dùng defer hoặc module để quản lý phụ thuộc rõ ràng: <script src="data.js" defer></script>
+    <script src="main.js" defer></script>
+-->
+<script src="main.js"></script>
+<script src="data.js"></script>
 </html>
