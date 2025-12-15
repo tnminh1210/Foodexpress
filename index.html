@@ -1,372 +1,474 @@
 <!DOCTYPE html>
+<!--
+  Khai báo kiểu tài liệu HTML5.
+  Trình duyệt dùng dòng này để xác định cú pháp và chế độ hiển thị.
+-->
 <html lang="en">
   <head>
+    <!-- Thiết lập bộ mã ký tự để hiển thị chính xác các ký tự (UTF-8) -->
     <meta charset="UTF-8" />
+    <!-- Thiết lập viewport để trang responsive trên thiết bị di động -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tiêu đề trang xuất hiện trên tab trình duyệt -->
     <title>Food Express</title>
+
+    <!--
+      Liên kết tới các file CSS của dự án.
+      Thứ tự có thể quan trọng: Base.css (các thiết lập cơ bản) -> Main.css (kiểu chính) -> Responsive.css (ghi đè cho responsive).
+    -->
     <link rel="stylesheet" href="Main.css">
     <link rel="stylesheet" href="Base.css">
+    <!-- Biểu tượng favicon hiển thị trên tab -->
     <link rel="icon" type="image/png" href="img/logo.png">
+    <!-- Thêm bộ icon Remixicon từ CDN để dùng các icon bằng class (ví dụ: ri-user-fill) -->
     <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
-<link rel="stylesheet" href="Responsive.css">
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- CSS bổ sung dành cho responsive -->
+    <link rel="stylesheet" href="Responsive.css">
   </head>
   <body>
+    <!--
+      Header chính chứa logo/brand, thanh tìm kiếm và liên kết điều hướng (tài khoản, giỏ hàng).
+      Thường xuất hiện ở phần trên cùng của mọi trang.
+    -->
     <div class="header">
+      <!-- Phần brand (logo + tên) -->
       <div class="brand">
+        <!-- Link về trang chủ (index.html) -->
         <a href="index.html">
-        <img src="img/logo.png" alt="logo">
-        <h1>Food Express</h1>
+          <img src="img/logo.png" alt="logo">
+          <h1>Food Express</h1>
         </a>
       </div>
+
+      <!-- Thanh tìm kiếm: input + icon (ở đây icon dùng class fa-solid nhưng chưa thấy import FontAwesome trong head) -->
       <div class="search-bar">
         <input type="text" placeholder="Tìm kiếm cửa hàng, món ăn..." />
+        <!-- Lưu ý: Nếu muốn icon hoạt động, cần import FontAwesome hoặc dùng icon từ Remixicon -->
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <div class="nav-links">
-  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
 
-  <a href="cart.html" class="cart-icon"> 
-    <i class="ri-shopping-bag-line"></i> Giỏ hàng
-    <span class="cart-count">0</span>
-  </a>
-  </div>
+      <!-- Liên kết điều hướng nhanh: tài khoản và giỏ hàng -->
+      <div class="nav-links">
+        <!-- Link đến trang đăng nhập/hoặc trang quản lý tài khoản -->
+        <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+
+        <!-- Link tới trang giỏ hàng, có badge hiển thị số lượng (class cart-count) -->
+        <a href="cart.html" class="cart-icon"> 
+          <i class="ri-shopping-bag-line"></i> Giỏ hàng
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
+
+    <!--
+      Thanh điều hướng theo danh mục (Trang chủ, Thức ăn, Nước uống, Tráng miệng).
+      Mỗi <p> có onclick gọi hàm showView để hiển thị view tương ứng (hàm này có thể được định nghĩa trong main.js).
+      Class "active" dùng để đánh dấu tab đang hoạt động.
+    -->
     <div class="navigation">
-    <p class="active" id="nav-home" onclick="showView(event, 'home-view', 'nav-home')">
+      <p class="active" id="nav-home" onclick="showView(event, 'home-view', 'nav-home')">
         <i class="ri-home-smile-fill"></i> Trang chủ
-    </p>
-    <p id="nav-food" onclick="showView(event, 'food-view', 'nav-food')">
+      </p>
+      <p id="nav-food" onclick="showView(event, 'food-view', 'nav-food')">
         <i class="ri-restaurant-fill"></i> Thức ăn
-    </p>
-    <p id="nav-drink" onclick="showView(event, 'drink-view', 'nav-drink')">
+      </p>
+      <p id="nav-drink" onclick="showView(event, 'drink-view', 'nav-drink')">
         <i class="ri-drinks-2-fill"></i> Nước uống
-    </p>
-    <p id="nav-cake" onclick="showView(event, 'cake-view', 'nav-cake')">
+      </p>
+      <p id="nav-cake" onclick="showView(event, 'cake-view', 'nav-cake')">
         <i class="ri-cake-3-fill"></i> Tráng miệng
-    </p>
+      </p>
     </div>
-<nav>
-  <div class="slider">
-    <div class="slide">
-      <img src="img/1.png" alt="banner">
-    </div>
-    <div class="slide">
-      <img src="img/2.jpg" alt="banner">
-    </div>
-    <div class="slide">
-      <img src="img/3.jpg" alt="banner">
-    </div>
-  </div>
-</nav>
-  <section id="home-view">
-    <div class="restaurant">
-      <h1>Nhà hàng nổi bật</h1>
-    </div>
-    <div class="arrange-shop">
-      <div class="box-shop">
-        <a href="shop.html?id=fries_vietnam">
-          <img id="fit-img" src="img/Logo/logo1.png"
-            alt="fries"
-          />
-          <h3>Fries Vietnam-Thế Giới Khoai Tây C..</h3>
-          <p>
-            89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Thành phố Hồ Chí Minh
-          </p>
-        </a>
+
+    <!--
+      Thanh slider/banner ngang - thường dùng để hiển thị các hình ảnh khuyến mãi hoặc banner.
+      Container .slider chứa nhiều .slide; việc chuyển slide có thể được xử lý bằng CSS animation hoặc JavaScript.
+    -->
+    <nav>
+      <div class="slider">
+        <div class="slide">
+          <img src="img/1.png" alt="banner">
+        </div>
+        <div class="slide">
+          <img src="img/2.jpg" alt="banner">
+        </div>
+        <div class="slide">
+          <img src="img/3.jpg" alt="banner">
+        </div>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=heypelo">
-              <img id="fit-img" src="img/Logo/logo2.jpg" alt="heypelo">
-              <h3>Hey! Pelo - Tacos Pháp</h3>
-              <p>11 Hẽm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. Hồ Chí Minh</p>
-            </a>
+    </nav>
+
+    <!--
+      Mỗi section tương ứng một "view" (home-view, food-view, drink-view, cake-view).
+      showView(event, viewId, navId) được gọi để chuyển giữa các view.
+      Cấu trúc bên trong chung: tiêu đề và lưới các "box-shop" (các cửa hàng nổi bật).
+    -->
+
+    <section id="home-view">
+      <!-- Tiêu đề cho danh sách nhà hàng nổi bật -->
+      <div class="restaurant">
+        <h1>Nhà hàng nổi bật</h1>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=comtam">
-              <img id="fit-img" src="img/Logo/logo3.png" alt="comtam">
-              <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
-              <p>74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh</p>
-            </a>
+
+      <!-- Lưới chứa các card cửa hàng -->
+      <div class="arrange-shop">
+        <!-- Mỗi box-shop là một cửa hàng, link tới shop.html với tham số id để tải dữ liệu tương ứng -->
+        <div class="box-shop">
+          <a href="shop.html?id=fries_vietnam">
+            <img id="fit-img" src="img/Logo/logo1.png" alt="fries" />
+            <h3>Fries Vietnam-Thế Giới Khoai Tây C..</h3>
+            <p>
+              89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Thành phố Hồ Chí Minh
+            </p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=heypelo">
+            <img id="fit-img" src="img/Logo/logo2.jpg" alt="heypelo">
+            <h3>Hey! Pelo - Tacos Pháp</h3>
+            <p>11 Hẽm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=comtam">
+            <img id="fit-img" src="img/Logo/logo3.png" alt="comtam">
+            <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
+            <p>74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=banhmi">
+            <img id="fit-img" src="img/Logo/logo4.png" alt="banhmi">
+            <h3>Bánh Mì Bà Huynh</h3>
+            <p>197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=phuclong">
+            <img id="fit-img" src="img/Logo/logo5.png" alt="phuclong">
+            <h3>Phúc Long</h3>
+            <p>734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=koi">
+            <img id="fit-img" src="img/Logo/logo6.jpg" alt="KoiT">
+            <h3>Koi Thé</h3>
+            <p>372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=TLJ">
+            <img id="fit-img" src="img/Logo/logo7.jpg" alt="TLJ">
+            <h3>TOUS les JOURS</h3>
+            <p>A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=PB">
+            <img id="fit-img" src="img/Logo/logo8.jpg" alt="PB">
+            <h3>Paris Baguette</h3>
+            <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110</p>
+          </a>
+        </div>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=banhmi">
-              <img id="fit-img" src="img/Logo/logo4.png" alt="banhmi">
-              <h3>Bánh Mì Bà Huynh</h3>
-              <p>197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
-            </a>
+    </section>
+
+    <!--
+      Section "food-view" — có cấu trúc gần giống "home-view".
+      Có thể dùng cùng style nhưng nội dung khác (dành cho danh mục Thức ăn).
+    -->
+    <section id="food-view">
+      <div class="restaurant">
+        <h1>Nhà hàng nổi bật</h1>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=phuclong">
-              <img id="fit-img" src="img/Logo/logo5.png" alt="phuclong">
-              <h3>Phúc Long</h3>
-              <p>734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh</p>
-            </a>
+      <div class="arrange-shop">
+        <div class="box-shop">
+          <a href="shop.html?id=fries_vietnam">
+            <img id="fit-img" src="img/Logo/logo1.png" alt="fries" />
+            <h3>Fries Vietnam-Thế Giới Khoai Tây C..</h3>
+            <p>
+              89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Thành phố Hồ Chí Minh
+            </p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=heypelo">
+            <img id="fit-img" src="img/Logo/logo2.jpg" alt="heypelo">
+            <h3>Hey! Pelo - Tacos Pháp</h3>
+            <p>11 Hẽm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=comtam">
+            <img id="fit-img" src="img/Logo/logo3.png" alt="comtam">
+            <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
+            <p>74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=banhmi">
+            <img id="fit-img" src="img/Logo/logo4.png" alt="banhmi">
+            <h3>Bánh Mì Bà Huynh</h3>
+            <p>197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=burger">
+            <img id="fit-img" src="img/Logo/logo9.png" alt="burger">
+            <h3>Burger King</h3>
+            <p>1 Đ. Tân Hòa 2, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=texas">
+            <img id="fit-img" src="img/Logo/logo10.jpg" alt="texas">
+            <h3>Texas Chicken</h3>
+            <p>13 Đ. Võ Văn NgânLinh Chiểu, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=ramen">
+            <img id="fit-img" src="img/Logo/logo11.jpg" alt="ramen">
+            <h3>Kohaku Ramen</h3>
+            <p>Vincom, 216 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=pizza">
+            <img id="fit-img" src="img/Logo/logo12.jpg" alt="pizza">
+            <h3>Pizza 4P's</h3>
+            <p>TTTM Vincom Mega Mall Grand Park, Khu dân cư và công viên, Phước Thiện, Long Bình, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=koi">
-              <img id="fit-img" src="img/Logo/logo6.jpg" alt="KoiT">
-              <h3>Koi Thé</h3>
-              <p>372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
+    </section>
+
+    <!--
+      Section "drink-view" — danh sách các quán đồ uống.
+      Cấu trúc giống các section trước.
+    -->
+    <section id="drink-view">
+      <div class="restaurant">
+        <h1>Nhà hàng nổi bật</h1>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=TLJ">
-              <img id="fit-img" src="img/Logo/logo7.jpg" alt="TLJ">
-              <h3>TOUS les JOURS</h3>
-              <p>A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM</p>
-            </a>
+      <div class="arrange-shop">
+        <div class="box-shop">
+          <a href="shop.html?id=phuclong">
+            <img id="fit-img" src="img/Logo/logo5.png" alt="phuclong">
+            <h3>Phúc Long</h3>
+            <p>734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=koi">
+            <img id="fit-img" src="img/Logo/logo6.jpg" alt="KoiT">
+            <h3>Koi Thé</h3>
+            <p>372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=highland">
+            <img id="fit-img" src="img/Logo/logo13.jpg" alt="highland">
+            <h3>Highlands Coffee</h3>
+            <p>
+              Linh Trung 1, Quốc Lộ 1A, Linh Trung Ward , Thu Duc District, Ho Chi Minh City
+            </p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=toco">
+            <img id="fit-img" src="img/Logo/logo14.jpg" alt="toco">
+            <h3>TOCO TOCO</h3>
+            <p>184 Nguyễn Văn Tăng, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=sb">
+            <img id="fit-img" src="img/Logo/logo15.jpg" alt="starbucks">
+            <h3>Starbucks</h3>
+            <p>Vinhomes Grand Park Origami, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=boba">
+            <img id="fit-img" src="img/Logo/logo16.jpg" alt="boba">
+            <h3>Bobapop - Taiwan Lattea</h3>
+            <p>Khu B Ký Túc Xá Làng Đại Học, Quốc lộ 1A, Linh Trung, Thủ Đức, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=GongCha">
+            <img id="fit-img" src="img/Logo/logo17.jpg" alt="GongCha">
+            <h3>Gong Cha</h3>
+            <p>32 Man Thiện, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=maycha">
+            <img id="fit-img" src="img/Logo/logo18.jpg" alt="maycha">
+            <h3>Trà Sữa MayCha</h3>
+            <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=PB">
-              <img id="fit-img" src="img/Logo/logo8.jpg" alt="PB">
-              <h3>Paris Baguette</h3>
-              <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110</p>
-            </a>
+    </section>
+
+    <!--
+      Section "cake-view" — danh sách các cửa hàng tráng miệng / bánh ngọt.
+    -->
+    <section id="cake-view">
+      <div class="restaurant">
+        <h1>Nhà hàng nổi bật</h1>
       </div>
-    </div>
-  </section>
-  <section id="food-view">
-    <div class="restaurant">
-      <h1>Nhà hàng nổi bật</h1>
-    </div>
-    <div class="arrange-shop">
-      <div class="box-shop">
-        <a href="shop.html?id=fries_vietnam">
-          <img id="fit-img" src="img/Logo/logo1.png"
-            alt="fries"
-          />
-          <h3>Fries Vietnam-Thế Giới Khoai Tây C..</h3>
-          <p>
-            89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Thành phố Hồ Chí Minh
-          </p>
-        </a>
+      <div class="arrange-shop">
+        <div class="box-shop">
+          <a href="shop.html?id=TLJ">
+            <img id="fit-img" src="img/Logo/logo7.jpg" alt="TLJ">
+            <h3>TOUS les JOURS</h3>
+            <p>A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=PB">
+            <img id="fit-img" src="img/Logo/logo8.jpg" alt="PB">
+            <h3>Paris Baguette</h3>
+            <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=mixue">
+            <img id="fit-img" src="img/Logo/logo19.jpg" alt="mixue">
+            <h3>Mixue</h3>
+            <p>
+              KTX khu B ,Đông Hoà, Dĩ An, Bình Dương, Dĩ An
+            </p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=cln">
+            <img id="fit-img" src="img/Logo/logo20.jpg" alt="cln">
+            <h3>Cái Lò Nướng</h3>
+            <p>29 Lê Văn Việt, Hiệp Phú, TP Thủ Đức, TP. Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=sugartown">
+            <img id="fit-img" src="img/Logo/logo21.jpg" alt="sugartowns">
+            <h3>Sugar Towns</h3>
+            <p>192 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=hlm">
+            <img id="fit-img" src="img/Logo/logo22.jpg" alt="hlm">
+            <h3>Hỷ Lâm Môn</h3>
+            <p>S6.06, Vinhomes Grand Park, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=givral">
+            <img id="fit-img" src="img/Logo/logo23.jpg" alt="givral">
+            <h3>Givral Bakery</h3>
+            <p>121 Đ. Lê Văn Việt, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
+
+        <div class="box-shop">
+          <a href="shop.html?id=abc">
+            <img id="fit-img" src="img/Logo/logo24.jpg" alt="abc">
+            <h3>ABC Bakery</h3>
+            <p>685 Đ. Lê Văn Việt, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh</p>
+          </a>
+        </div>
       </div>
-      <div class="box-shop">
-            <a href="shop.html?id=heypelo">
-              <img id="fit-img" src="img/Logo/logo2.jpg" alt="heypelo">
-              <h3>Hey! Pelo - Tacos Pháp</h3>
-              <p>11 Hẽm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=comtam">
-              <img id="fit-img" src="img/Logo/logo3.png" alt="comtam">
-              <h3>Cơm Tấm Nguyễn Văn Cừ</h3>
-              <p>74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=banhmi">
-              <img id="fit-img" src="img/Logo/logo4.png" alt="banhmi">
-              <h3>Bánh Mì Bà Huynh</h3>
-              <p>197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=burger">
-              <img id="fit-img" src="img/Logo/logo9.png" alt="burger">
-              <h3>Burger King</h3>
-              <p>1 Đ. Tân Hòa 2, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=texas">
-              <img id="fit-img" src="img/Logo/logo10.jpg" alt="texas">
-              <h3>Texas Chicken</h3>
-              <p>13 Đ. Võ Văn NgânLinh Chiểu, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=ramen">
-              <img id="fit-img" src="img/Logo/logo11.jpg" alt="ramen">
-              <h3>Kohaku Ramen</h3>
-              <p>Vincom, 216 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=pizza">
-              <img id="fit-img" src="img/Logo/logo12.jpg" alt="pizza">
-              <h3>Pizza 4P's</h3>
-              <p>TTTM Vincom Mega Mall Grand Park, Khu dân cư và công viên, Phước Thiện, Long Bình, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-    </div>
-  </section>
-  <section id="drink-view">
-    <div class="restaurant">
-      <h1>Nhà hàng nổi bật</h1>
-    </div>
-    <div class="arrange-shop">
-      <div class="box-shop">
-            <a href="shop.html?id=phuclong">
-              <img id="fit-img" src="img/Logo/logo5.png" alt="phuclong">
-              <h3>Phúc Long</h3>
-              <p>734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=koi">
-              <img id="fit-img" src="img/Logo/logo6.jpg" alt="KoiT">
-              <h3>Koi Thé</h3>
-              <p>372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-        <a href="shop.html?id=highland">
-          <img id="fit-img" src="img/Logo/logo13.jpg" alt="highland">
-          <h3>Highlands Coffee</h3>
-          <p>
-             Linh Trung 1, Quốc Lộ 1A, Linh Trung Ward , Thu Duc District, Ho Chi Minh City
-          </p>
-        </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=toco">
-              <img id="fit-img" src="img/Logo/logo14.jpg" alt="toco">
-              <h3>TOCO TOCO</h3>
-              <p>184 Nguyễn Văn Tăng, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=sb">
-              <img id="fit-img" src="img/Logo/logo15.jpg" alt="starbucks">
-              <h3>Starbucks</h3>
-              <p>Vinhomes Grand Park Origami, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=boba">
-              <img id="fit-img" src="img/Logo/logo16.jpg" alt="boba">
-              <h3>Bobapop - Taiwan Lattea</h3>
-              <p>Khu B Ký Túc Xá Làng Đại Học, Quốc lộ 1A, Linh Trung, Thủ Đức, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=GongCha">
-              <img id="fit-img" src="img/Logo/logo17.jpg" alt="GongCha">
-              <h3>Gong Cha</h3>
-              <p>32 Man Thiện, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=maycha">
-              <img id="fit-img" src="img/Logo/logo18.jpg" alt="maycha">
-              <h3>Trà Sữa MayCha</h3>
-              <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-    </div>
-  </section>
-  <section id="cake-view">
-    <div class="restaurant">
-      <h1>Nhà hàng nổi bật</h1>
-    </div>
-    <div class="arrange-shop">
-      <div class="box-shop">
-            <a href="shop.html?id=TLJ">
-              <img id="fit-img" src="img/Logo/logo7.jpg" alt="TLJ">
-              <h3>TOUS les JOURS</h3>
-              <p>A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=PB">
-              <img id="fit-img" src="img/Logo/logo8.jpg" alt="PB">
-              <h3>Paris Baguette</h3>
-              <p>TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110</p>
-            </a>
-      </div>
-      <div class="box-shop">
-        <a href="shop.html?id=mixue">
-          <img id="fit-img" src="img/Logo/logo19.jpg" alt="mixue">
-          <h3>Mixue</h3>
-          <p>
-             KTX khu B ,Đông Hoà, Dĩ An, Bình Dương, Dĩ An
-          </p>
-        </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=cln">
-              <img id="fit-img" src="img/Logo/logo20.jpg" alt="cln">
-              <h3>Cái Lò Nướng</h3>
-              <p>29 Lê Văn Việt, Hiệp Phú, TP Thủ Đức, TP. Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=sugartown">
-              <img id="fit-img" src="img/Logo/logo21.jpg" alt="sugartowns">
-              <h3>Sugar Towns</h3>
-              <p>192 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=hlm">
-              <img id="fit-img" src="img/Logo/logo22.jpg" alt="hlm">
-              <h3>Hỷ Lâm Môn</h3>
-              <p>S6.06, Vinhomes Grand Park, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=givral">
-              <img id="fit-img" src="img/Logo/logo23.jpg" alt="givral">
-              <h3>Givral Bakery</h3>
-              <p>121 Đ. Lê Văn Việt, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-      <div class="box-shop">
-            <a href="shop.html?id=abc">
-              <img id="fit-img" src="img/Logo/logo24.jpg" alt="abc">
-              <h3>ABC Bakery</h3>
-              <p>685 Đ. Lê Văn Việt, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh</p>
-            </a>
-      </div>
-    </div>
-  </section>
+    </section>
   </body>
+
+  <!--
+    Footer chứa thông tin liên hệ, link tới app store / google play và các liên kết công ty.
+    Thường đặt ở cuối trang và có style riêng (footer .footer và .copyright).
+  -->
   <footer>
     <div class="footer">
-        <section>
-          <div class="logo">
-            <img src="img/logo.png" alt="logo">
-            <h1>Food Express</h1>
-          </div>
-          <ul class="unlist">
-            <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
-            <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
-            <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
-            <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
-            <li><i class="ri-instagram-fill"></i> FoodExpress</li>
-          </ul>
-        </section>
-        <section>
-          <div class="app">
-            <h1>Ứng dụng Food Express</h1>
-            <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
-            <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
-              
-              
-          </div>
-        </section>
-        <section>
-          <div class="company-footer">
-            <h1>Công ty</h1>
-            <p><a href="#">Giới thiệu</a></p>
-            <p><a href="#">Chung Tâm trợ giúp</a></p>
-            <p><a href="#">Quy chế</a></p>
-            <p><a href="#">Điều khoản sử dụng</a></p>
-            <p><a href="#">Bảo mật thông tin</a></p>
-            <p><a href="#">Giải quyết khiếu nại</a></p>
-            <p> <a href="#">Hợp tác nhân viên giao nhận</a></p>
-            <p><a href="#">Đăng kí quán</a></p>
-          </div>
-        </section>
+      <section>
+        <div class="logo">
+          <img src="img/logo.png" alt="logo">
+          <h1>Food Express</h1>
+        </div>
+        <ul class="unlist">
+          <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
+          <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
+          <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
+          <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
+          <li><i class="ri-instagram-fill"></i> FoodExpress</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="app">
+          <h1>Ứng dụng Food Express</h1>
+          <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
+          <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
+        </div>
+      </section>
+
+      <section>
+        <div class="company-footer">
+          <h1>Công ty</h1>
+          <p><a href="#">Giới thiệu</a></p>
+          <p><a href="#">Chung Tâm trợ giúp</a></p>
+          <p><a href="#">Quy chế</a></p>
+          <p><a href="#">Điều khoản sử dụng</a></p>
+          <p><a href="#">Bảo mật thông tin</a></p>
+          <p><a href="#">Giải quyết khiếu nại</a></p>
+          <p><a href="#">Hợp tác nhân viên giao nhận</a></p>
+          <p><a href="#">Đăng kí quán</a></p>
+        </div>
+      </section>
     </div>
+
     <div class="copyright">
       <p>© 2024 Food Express. All rights reserved.</p>
+    </div>
   </footer>
+
+  <!--
+    Tải các file JavaScript:
+    - main.js: có thể chứa logic điều hướng view, slider, cập nhật số lượng giỏ hàng, v.v.
+    - data.js: có thể chứa dữ liệu tĩnh, danh sách cửa hàng/món ăn hoặc hàm lấy dữ liệu.
+    Lưu ý: Đảm bảo các file tồn tại và đường dẫn đúng để tránh lỗi console.
+  -->
   <script src="main.js"></script>
   <script src="data.js"></script>
 </html>
