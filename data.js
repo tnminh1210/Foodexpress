@@ -21,8 +21,6 @@
     hoặc tìm món theo id:
     restaurants["fries_vietnam"].menu.find(item => item.id === "fries_001")
 */
-
-// Database các nhà hàng
 const restaurants = {
     // Key: "fries_vietnam" — định danh (ID) của nhà hàng, dùng để truy vấn
     "fries_vietnam": {
@@ -691,21 +689,4 @@ const restaurants = {
     },
 };
 
-// Kết thúc object restaurants
-// Sử dụng:
- // - Để lấy tất cả nhà hàng: Object.keys(restaurants) hoặc Object.values(restaurants)
- // - Để lấy menu của một nhà hàng: restaurants[restaurantId].menu
- // - Để tìm món theo id toàn bộ hệ thống, có thể duyệt qua tất cả nhà hàng:
- //     Object.values(restaurants).flatMap(r => r.menu).find(item => item.id === 'some_id')
-//
-// Lưu ý dữ liệu:
- // - Giá hiện tại là số (number). Khi hiển thị cho người dùng, nên định dạng tiền (ví dụ: 155000 -> "155.000₫" hoặc "155.000đ").
- // - Một số id món trùng lặp (ví dụ trong heypelo) nên sửa thành duy nhất nếu cần tìm chính xác theo id.
- // - Một số key nhà hàng viết không đồng nhất (ví dụ "TLJ", "PB", "GongCha" có chữ hoa) — tốt nhất thống nhất dùng lowercase hoặc camelCase.
- // - Đường dẫn ảnh là tương đối so với nơi file này được phục vụ; nếu server thay đổi đường dẫn tĩnh, cần cập nhật.
-//
-// Nếu muốn, tôi có thể:
- // - Kiểm tra và sửa trùng id món
- // - Chuẩn hóa các key nhà hàng (ví dụ all-lowercase)
- // - Thêm trường id duy nhất toàn cục (UUID) cho từng món
- // Hãy cho biết bạn muốn tôi thực hiện thay đổi nào.
+
