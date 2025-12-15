@@ -1,100 +1,183 @@
+
 <!DOCTYPE html>
+<!-- Khai báo tài liệu HTML5 -->
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
+  <!-- Thiết lập bảng mã UTF-8 để hiển thị đúng ký tự tiếng Việt -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Thiết lập viewport để trang hiển thị đúng trên thiết bị di động -->
   <title>Login & Register</title>
-  <link rel="stylesheet" href="Main.css">
-  <link rel="stylesheet" href="Base.css">
-  <link rel="stylesheet" href="Responsive.css">
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+  <style>
+    /* CSS cho toàn trang */
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      /* background: gradient màu cam sang đỏ */
+      background: linear-gradient(135deg, #ff5722, #ff3d00);
+      overflow: hidden; /* ẩn phần nội dung tràn ra ngoài */
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      padding: 15px 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      position: fixed; /* cố định thanh điều hướng ở vị trí top */
+      top: 0;
+      left: 0;
+      z-index: 10; /* đảm bảo nav nằm trên các phần tử khác */
+    }
+
+    nav a {
+      color: #ff3d00;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s, transform 0.3s; /* hiệu ứng chuyển màu và scale khi hover */
+    }
+
+    nav a:hover {
+      color: #e63300;
+      transform: scale(1.1); /* phóng to nhẹ khi hover */
+    }
+
+    .container {
+      width: 350px; /* chiều rộng cố định cho khung form */
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      text-align: center;
+      margin-top: 100px; /* đẩy xuống để không bị nav cố định che */
+      opacity: 0; /* ban đầu ẩn, dùng animation để hiện */
+      transform: translateY(-50px); /* dịch lên để animation có hiệu ứng trượt xuống */
+      animation: fadeIn 0.6s forwards; /* chạy animation fadeIn rồi giữ trạng thái cuối */
+    }
+
+    h2 {
+      color: #ff3d00;
+      margin-bottom: 20px;
+      animation: fadeIn 0.8s forwards; /* tiêu đề cũng có animation fadeIn */
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      transition: transform 0.3s; /* hiệu ứng khi focus */
+      box-sizing: border-box; /* đảm bảo padding không làm vượt kích thước */
+    }
+
+    input:focus {
+      transform: scale(1.05); /* phóng to nhẹ khi input được focus */
+      border-color: #ff3d00; /* đổi màu viền khi focus */
+      outline: none; /* ẩn outline mặc định */
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff3d00;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s, transform 0.3s; /* hiệu ứng hover cho button */
+    }
+
+    button:hover {
+      background-color: #e63300;
+      transform: scale(1.03); /* phóng to nhẹ khi hover */
+    }
+
+    .switch {
+      margin-top: 15px;
+      color: #444;
+      font-size: 14px;
+      opacity: 0; /* ban đầu ẩn, sau đó animation hiện */
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.4s; /* delay để phần này xuất hiện muộn hơn */
+    }
+
+    .switch span {
+      color: #ff3d00;
+      cursor: pointer; /* con trỏ biến thành tay khi hover lên span */
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      /* animation từ trạng thái mặc định đến trạng thái cuối: opacity 1 và transform về vị trí ban đầu */
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="header">
-      <div class="brand">
-        <a href="index.html">
-        <img src="img/logo.png" alt="logo">
-        <h1>Food Express</h1>
-        </a>
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Tìm kiếm cửa hàng, món ăn..." />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-      <div class="nav-links">
-  <a href="Login.html"><i class="ri-user-fill"></i> Tài Khoản</a>
+  <nav>
+    <!-- Thanh điều hướng cố định ở trên cùng -->
+    <a href="index.html">Home</a>
+    <!-- Link "Đăng nhập" có attribute onclick gọi hàm showLogin() trong script phía dưới -->
+    <a href="#" onclick="showLogin()">Đăng nhập</a>
+    <!-- Link "Đăng ký" có attribute onclick gọi hàm showRegister() -->
+    <a href="#" onclick="showRegister()">Đăng ký</a>
+  </nav>
 
-  <a href="cart.html" class="cart-icon"> 
-    <i class="ri-shopping-bag-line"></i> Giỏ hàng
-    <span class="cart-count">0</span>
-  </a>
-  </div>
-    </div>
-    <div class="accountbox">
   <div class="container" id="loginBox">
+    <!-- Khung đăng nhập (mặc định hiển thị) -->
     <h2>Đăng nhập</h2>
+    <!-- Input tên đăng nhập: chỉ có placeholder để hiển thị gợi ý -->
     <input type="text" placeholder="Tên đăng nhập" />
+    <!-- Input mật khẩu: type="password" để che ký tự nhập -->
     <input type="password" placeholder="Mật khẩu" />
+    <!-- Nút đăng nhập: hiện tại onclick chuyển hướng sang index.html -->
     <button onclick="window.location.href='index.html'">Đăng nhập</button>
+    <!-- Dòng chuyển đổi: click vào "Đăng ký" sẽ gọi showRegister() -->
     <p class="switch">Chưa có tài khoản? <span onclick="showRegister()">Đăng ký</span></p>
-    <p><a href="https://www.facebook.com/login/"><i class="ri-facebook-circle-fill"></i></a> <a href="https://accounts.google.com/signin/v2/usernamerecovery?hl=vi&flowName=GlifWebSignIn&flowEntry=ServiceLogin"> <i class="ri-google-line"></i></a>
-    </p>
   </div>
 
   <div class="container" id="registerBox" style="display:none;">
+    <!-- Khung đăng ký (mặc định ẩn bằng style="display:none;") -->
     <h2>Đăng ký</h2>
+    <!-- Input tên đăng nhập cho form đăng ký -->
     <input type="text" placeholder="Tên đăng nhập" />
+    <!-- Input email: type="email" giúp trình duyệt hiểu đây là trường email -->
     <input type="email" placeholder="Email" />
+    <!-- Input mật khẩu cho đăng ký -->
     <input type="password" placeholder="Mật khẩu" />
+    <!-- Nút tạo tài khoản: onclick hiện tại chuyển hướng sang index.html -->
     <button onclick="window.location.href='index.html'">Tạo tài khoản</button>
+    <!-- Dòng chuyển đổi: click vào "Đăng nhập" sẽ gọi showLogin() -->
     <p class="switch">Đã có tài khoản? <span onclick="showLogin()">Đăng nhập</span></p>
-    <p><a href="https://www.facebook.com/login/"><i class="ri-facebook-circle-fill"></i></a> <a href="https://accounts.google.com/signin/v2/usernamerecovery?hl=vi&flowName=GlifWebSignIn&flowEntry=ServiceLogin"> <i class="ri-google-line"></i></a>
   </div>
-</div>
+
+  <script>
+    // Hàm showRegister: ẩn phần loginBox, hiện phần registerBox
+    function showRegister() {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('registerBox').style.display = 'block';
+    }
+
+    // Hàm showLogin: ẩn phần registerBox, hiện phần loginBox
+    function showLogin() {
+      document.getElementById('registerBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }
+  </script>
 </body>
- <footer>
-    <div class="footer">
-        <section>
-          <div class="logo">
-            <img src="img/logo.png" alt="logo">
-            <h1>Food Express</h1>
-          </div>
-          <ul class="unlist">
-            <li><i class="ri-mail-fill"></i> fooddelivery@gmail.com</li>
-            <li><i class="ri-phone-fill"></i> 028 3725 2002</li>
-            <li><i class="ri-map-pin-fill"></i> TP. Thu Duc, TP. Hồ Chí Minh</li>
-            <li><i class="ri-facebook-circle-fill"></i> Food Express Viet Nam</li>
-            <li><i class="ri-instagram-fill"></i> FoodExpress</li>
-          </ul>
-        </section>
-        <section>
-          <div class="app">
-            <h1>Ứng dụng Food Express</h1>
-            <p><a href="#"><i class="ri-apple-fill"></i> App Store</a></p>
-            <p><a href="#"><i class="ri-google-play-fill"></i> Google Play</a></p>
-              
-              
-          </div>
-        </section>
-        <section>
-          <div class="company-footer">
-            <h1>Công ty</h1>
-            <p><a href="#">Giới thiệu</a></p>
-            <p><a href="#">Chung Tâm trợ giúp</a></p>
-            <p><a href="#">Quy chế</a></p>
-            <p><a href="#">Điều khoản sử dụng</a></p>
-            <p><a href="#">Bảo mật thông tin</a></p>
-            <p><a href="#">Giải quyết khiếu nại</a></p>
-            <p> <a href="#">Hợp tác nhân viên giao nhận</a></p>
-            <p><a href="#">Đăng kí quán</a></p>
-          </div>
-        </section>
-    </div>
-    <div class="copyright">
-      <p>© 2024 Food Express. All rights reserved.</p>
-  </footer>
-  <script src="main.js"></script>
-  <script src="data.js"></script>
 </html>
