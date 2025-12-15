@@ -1,13 +1,40 @@
 // Database các nhà hàng
+
+/*
+  Cấu trúc chung:
+  - restaurants: một object (dictionary) nơi mỗi key là định danh nhà hàng (restaurantId).
+  - Mỗi nhà hàng có các thuộc tính:
+    - name: Tên hiển thị của nhà hàng (string)
+    - address: Địa chỉ (string)
+    - rating: Đánh giá trung bình (number)
+    - time: Giờ phục vụ / mở cửa (string)
+    - priceRange: Chuỗi mô tả mức giá (string)
+    - logo: Đường dẫn đến ảnh logo (string, đường dẫn tương đối)
+    - bannerBg: Đường dẫn ảnh nền banner (string, đường dẫn tương đối)
+    - menu: mảng các món ăn, mỗi phần tử là object { id, name, price, img }
+      + id: mã món (string) — nên là duy nhất trong toàn bộ hệ thống để dễ quản lý
+      + name: tên món (string)
+      + price: giá (number) — ở đây giá đã là số (ví dụ 155000) — đơn vị ứng dụng hiển thị có thể là VND
+      + img: đường dẫn ảnh món (string)
+  - Cách truy xuất ví dụ:
+    restaurants["fries_vietnam"].menu[0].price
+    hoặc tìm món theo id:
+    restaurants["fries_vietnam"].menu.find(item => item.id === "fries_001")
+*/
+
+// Database các nhà hàng
 const restaurants = {
+    // Key: "fries_vietnam" — định danh (ID) của nhà hàng, dùng để truy vấn
     "fries_vietnam": {
+        // name, address, rating... là các metadata dùng để hiển thị thông tin chi tiết nhà hàng
         name: "Fries Vietnam - Thế Giới Khoai Tây Chiên",
         address: "89 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, TP. HCM",
-        rating: 4.5,
-        time: "10:00 - 21:30",
-        priceRange: "60,000đ - 160,000đ",
-        logo: "img/Logo/logo1.png",
-        bannerBg: "img/Background-shop/bg1.jpg", // Ảnh nền banner (nếu muốn thay đổi)
+        rating: 4.5, // rating là số (float)
+        time: "10:00 - 21:30", // giờ mở cửa ở dạng chuỗi
+        priceRange: "60,000đ - 160,000đ", // mô tả khoảng giá, chỉ để hiển thị
+        logo: "img/Logo/logo1.png", // đường dẫn tương đối tới ảnh logo
+        bannerBg: "img/Background-shop/bg1.jpg", // ảnh nền banner (nếu muốn thay đổi)
+        // menu: mảng chứa các món ăn; mỗi phần tử là 1 object mô tả món
         menu: [
             { id: "fries_001", name: "Khoai Lõi Vai Bò Mỹ Xốt Phômai", price: 155000, img: "img/menu/fries_001.jpg" },
             { id: "fries_002", name: "Khoai Lõi Vai Bò Mỹ Xốt Tiêu Đen", price: 145000, img: "img/menu/fries_002.jpg" },
@@ -26,9 +53,11 @@ const restaurants = {
             { id: "fries_015", name: "Salad Tôm Bơ", price: 97000, img: "img/menu/fries_015.jpg" },
             { id: "fries_016", name: "Salad Gà Nướng", price: 68000, img: "img/menu/fries_016.jpg" },
             { id: "fries_017", name: "Salad Trái Cây Nhiệt Đới", price: 60000, img: "img/menu/fries_017.jpg" },
-            // Thêm các món khác vào đây
+            // Thêm các món khác vào đây (dễ dàng mở rộng)
         ]
     },
+
+    // Nhà hàng "heypelo"
     "heypelo": {
         name: "Hey! Pelo - Tacos Pháp",
         address: "11 Hẻm 94 Võ Oanh, Phường 25, Bình Thạnh, TP. HCM",
@@ -36,8 +65,10 @@ const restaurants = {
         time: "09:00 - 22:00",
         priceRange: "60,000đ - 150,000đ",
         logo: "img/Logo/logo2.jpg",
-        bannerBg: "img/Background-shop/bg2.jpg", // Ảnh nền banner (nếu muốn thay đổi)
+        bannerBg: "img/Background-shop/bg2.jpg", // ảnh nền banner
         menu: [
+            // Chú ý: các id trùng lặp trong cùng 1 menu có thể gây khó khăn khi tìm/mapping món.
+            // Ở đây 3 món đầu đều dùng id "pelo_001" — nên sửa nếu cần id duy nhất.
             { id: "pelo_001", name: "Tacos Size Mini", price: 80000, img: "img/menu/heypelo_001.jpg" },
             { id: "pelo_001", name: "Tacos Size Medium", price: 150000, img: "img/menu/heypelo_001.jpg" },
             { id: "pelo_001", name: "Tacos Size Large", price: 175000, img: "img/menu/heypelo_001.jpg" },
@@ -47,6 +78,8 @@ const restaurants = {
             { id: "pelo_005", name: "K-Pelo", price: 110000, img: "img/menu/heypelo_005.webp" },
         ]
     },
+
+    // Nhà hàng "comtam"
     "comtam": {
         name: "Cơm Tấm Nguyễn Văn Cừ",
         address: "74 Nguyễn Văn Cừ, P. Nguyễn Cư Trinh, Quận 1, TP. Hồ Chí Minh ",
@@ -72,6 +105,8 @@ const restaurants = {
             { id: "comtam_014", name: "Cơm Tấm Đùi Gà Lạp Xưởng", price: 119000, img: "img/menu/comtam_014.png" },
         ]
     },
+
+    // Nhà hàng "banhmi"
     "banhmi": {
         name: "Bánh Mì Bà Huynh",
         address: "197A Nguyễn Trãi, P. Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh",
@@ -81,7 +116,7 @@ const restaurants = {
         logo: "img/Logo/logo4.png",
         bannerBg: "img/Background-shop/bg4.png",
         menu: [
-            { id: "banhmi_001", name: "Bánh mì đặc biệt size lướn", price: 100000, img: "img/menu/banhmi_001.webp" },
+            { id: "banhmi_001", name: "Bánh mì đặc biệt size lướn", price: 100000, img: "img/menu/banhmi_001.webp" }, // chú ý lỗi chính tả 'lướn' => 'lớn'
             { id: "banhmi_002", name: "Bánh mì đặc biệt size nhỏ 2/3", price: 75000, img: "img/menu/banhmi_001.webp" },
             { id: "banhmi_003", name: "Bánh mì nem nướng", price: 95000, img: "img/menu/banhmi_001.webp" },
             { id: "banhmi_004", name: "Bánh mì thịt pate bơ chà bông", price: 95000, img: "img/menu/banhmi_001.webp" },
@@ -92,6 +127,8 @@ const restaurants = {
             { id: "banhmi_009", name: "Xôi khúc nhân thịt", price: 26000, img: "img/menu/banhmi_005.jpg" },
         ]
     },
+
+    // Nhà hàng "phuclong" (chuỗi trà & cà phê)
     "phuclong": {
         name: "Phúc Long",
         address: "734 Kha Vạn Cân, khu phố 5 P. Linh Trung TP. Thủ Đức TP. Hồ Chí Minh",
@@ -113,6 +150,8 @@ const restaurants = {
             { id: "phuclong_010", name: "Cà Phê Sữa Đá (M)", price: 39000, img: "img/menu/phuclong_010.png" },
         ]
     },
+
+    // Nhà hàng "koi"
     "koi": {
         name: "Koi Thé",
         address: "372 Đ. Võ Văn Ngân,P. Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -134,6 +173,8 @@ const restaurants = {
             { id: "koi_010", name: "HOT Brown Sugar Milk Tea", price: 84000, img: "img/menu/koi_010.webp" },
         ]
     },
+
+    // "TLJ" dùng chữ in hoa làm key (không lỗi nhưng không đồng nhất với các key khác)
     "TLJ": {
         name: "TOUS les JOURS",
         address: "A0103 Tòa Nhà T5, Masteri, 159 Xa Lộ Hà Nội, P. Thảo Điền, Tp. Thủ Đức, TP. HCM",
@@ -155,6 +196,8 @@ const restaurants = {
             { id: "tlj_010", name: "Oat Milk Cafe Latte - Cà phê Latte Sữa Yến Mạch", price: 70000, img: "img/menu/tlj_010.webp" },
         ]
     },
+
+    // "PB": Paris Baguette
     "PB": {
         name: "Paris Baguette",
         address: "TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh 71110",
@@ -180,6 +223,8 @@ const restaurants = {
             { id: "pb_014", name: "Paris Rocher (Short)", price: 80000, img: "img/menu/pb_014.webp" },
         ]
     },
+
+    // "burger": Burger King
     "burger": {
         name: "Burger King",
         address: "1 Đ. Tân Hòa 2, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh",
@@ -206,9 +251,11 @@ const restaurants = {
             { id: "burger_015", name: "SPRITE", price: 25000, img: "img/menu/burger_015.jpg" },
         ]
     },
+
+    // "texas": Texas Chicken
     "texas": {
         name: "Texas Chicken",
-        address: "13 Đ. Võ Văn NgânLinh Chiểu, Thủ Đức, Thành phố Hồ Chí Minh",
+        address: "13 Đ. Võ Văn NgânLinh Chiểu, Thủ Đức, Thành phố Hồ Chí Minh", // chú ý thiếu khoảng trắng sau 'Ngân'
         rating: 4.9,
         time: "09:00 - 22:00",
         priceRange: "60,000đ - 150,000đ",
@@ -232,6 +279,8 @@ const restaurants = {
             { id: "texas_015", name: "Nước ngọt Coca-Cola", price: 27000, img: "img/menu/texas_015.webp" },
         ]
     },
+
+    // "ramen": Kohaku Ramen
     "ramen": {
         name: "Kohaku Ramen",
         address: "Vincom, 216 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -260,6 +309,8 @@ const restaurants = {
             { id: "ramen_017", name: "Trà Oolong Tea+ (Plus) Không Đường (Chai)", price: 25000, img: "img/menu/ramen_017.webp" },
         ]
     },
+
+    // "pizza": Pizza 4P's
     "pizza": {
         name: "Pizza 4P's",
         address: "TTTM Vincom Mega Mall Grand Park, Khu dân cư và công viên, Phước Thiện, Long Bình, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -287,6 +338,8 @@ const restaurants = {
             { id: "pizza_016", name: "Coca-Cola Không Đường (Lon)", price: 25000, img: "img/menu/pizza_016.webp" },
         ]
     },
+
+    // "highland": Highlands Coffee
     "highland": {
         name: "Highlands Coffee",
         address: "Linh Trung 1, Quốc Lộ 1A, Linh Trung Ward , Thu Duc District, Ho Chi Minh City",
@@ -315,6 +368,8 @@ const restaurants = {
             { id: "highland_017", name: "Bánh Croissant Sô Cô La", price: 40000, img: "img/menu/highland_017.webp" },
         ]
     },
+
+    // "toco": TOCO TOCO
     "toco": {
         name: "TOCO TOCO",
         address: "184 Nguyễn Văn Tăng, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -343,6 +398,8 @@ const restaurants = {
             { id: "toco_017", name: "Bánh Croissant Sô Cô La", price: 40000, img: "img/menu/toco_017.jpg" },
         ]
     },
+
+    // "sb": Starbucks
     "sb": {
         name: "Starbucks",
         address: "Vinhomes Grand Park Origami, TP. Hồ Chí Minh",
@@ -371,6 +428,8 @@ const restaurants = {
             { id: "sb_017", name: "Bacon Cheese & Egg Croissant Bun", price: 100000, img: "img/menu/sb_017.webp" },
         ]
     },
+
+    // "boba": Bobapop
     "boba": {
         name: "Bobapop - Taiwan Lattea",
         address: "Khu B Ký Túc Xá Làng Đại Học, Quốc lộ 1A, Linh Trung, Thủ Đức, TP. Hồ Chí Minh",
@@ -399,6 +458,8 @@ const restaurants = {
             { id: "boba_017", name: "Trà Bá Tước Sủi Bọt", price: 44000, img: "img/menu/boba_017.webp" },
         ]
     },
+
+    // "GongCha"
     "GongCha": {
         name: "Gong Cha",
         address: "32 Man Thiện, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -427,6 +488,8 @@ const restaurants = {
             { id: "gongcha_017", name: "Trà Oolong", price: 48000, img: "img/menu/gongcha_017.webp" },
         ]
     },
+
+    // "maycha": Trà Sữa MayCha
     "maycha": {
         name: "Trà Sữa MayCha",
         address: "TTTM Thiso Mall Sala, 8 - 10 Mai Chí Thọ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -455,6 +518,8 @@ const restaurants = {
             { id: "maycha_017", name: "Trà Chanh Thanh Xuân", price: 20000, img: "img/menu/maycha_017.png" },
         ]
     },
+
+    // "mixue": Trà Sữa Mixue
     "mixue": {
         name: "Trà Sữa Mixue",
         address: "KTX khu B ,Đông Hoà, Dĩ An, Bình Dương, Dĩ An",
@@ -481,6 +546,8 @@ const restaurants = {
             { id: "mixue_016", name: "Lucky Sundae O-coco", price: 25000, img: "img/menu/mixue_016.jpg" },
         ]
     },
+
+    // "cln": Cái Lò Nướng (cửa hàng bánh/ngọt cao cấp)
     "cln": {
         name: "Cái Lò Nướng",
         address: "29 Lê Văn Việt, Hiệp Phú, TP Thủ Đức, TP. Hồ Chí Minh",
@@ -508,6 +575,8 @@ const restaurants = {
             { id: "cln_017", name: "Sweetin – Merry Misu", price: 285000, img: "img/menu/cln_017.jpg" },
         ]
     },
+
+    // "sugartown": Sugar Towns
     "sugartown": {
         name: "Sugar Towns",
         address: "192 Đ. Võ Văn Ngân, Bình Thọ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -533,6 +602,8 @@ const restaurants = {
             { id: "sugartown_015", name: "Bánh Kem Socola Mẫu 2 size 18cm", price: 480000, img: "img/menu/sugartown_015.png" },
         ]
     },
+
+    // "hlm": Hỷ Lâm Môn
     "hlm": {
         name: "Hỷ Lâm Môn",
         address: "S6.06, Vinhomes Grand Park, Thành phố Hồ Chí Minh",
@@ -560,6 +631,8 @@ const restaurants = {
             { id: "hlm_016", name: "MOUSSE CHANH DÂY LY", price: 20000, img: "img/menu/hlm_016.png" },
         ]
     },
+
+    // "givral": Givral Bakery
     "givral": {
         name: "Givral Bakery",
         address: "121 Đ. Lê Văn Việt, Hiệp Phú, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -587,6 +660,8 @@ const restaurants = {
             { id: "givral_016", name: "Chocolate Cheese", price: 58000, img: "img/menu/givral_016.jpg" },
         ]
     },
+
+    // "abc": ABC Bakery
     "abc": {
         name: "ABC Bakery",
         address: "685 Đ. Lê Văn Việt, Long Thạnh Mỹ, Thủ Đức, Thành phố Hồ Chí Minh",
@@ -615,3 +690,22 @@ const restaurants = {
         ]
     },
 };
+
+// Kết thúc object restaurants
+// Sử dụng:
+ // - Để lấy tất cả nhà hàng: Object.keys(restaurants) hoặc Object.values(restaurants)
+ // - Để lấy menu của một nhà hàng: restaurants[restaurantId].menu
+ // - Để tìm món theo id toàn bộ hệ thống, có thể duyệt qua tất cả nhà hàng:
+ //     Object.values(restaurants).flatMap(r => r.menu).find(item => item.id === 'some_id')
+//
+// Lưu ý dữ liệu:
+ // - Giá hiện tại là số (number). Khi hiển thị cho người dùng, nên định dạng tiền (ví dụ: 155000 -> "155.000₫" hoặc "155.000đ").
+ // - Một số id món trùng lặp (ví dụ trong heypelo) nên sửa thành duy nhất nếu cần tìm chính xác theo id.
+ // - Một số key nhà hàng viết không đồng nhất (ví dụ "TLJ", "PB", "GongCha" có chữ hoa) — tốt nhất thống nhất dùng lowercase hoặc camelCase.
+ // - Đường dẫn ảnh là tương đối so với nơi file này được phục vụ; nếu server thay đổi đường dẫn tĩnh, cần cập nhật.
+//
+// Nếu muốn, tôi có thể:
+ // - Kiểm tra và sửa trùng id món
+ // - Chuẩn hóa các key nhà hàng (ví dụ all-lowercase)
+ // - Thêm trường id duy nhất toàn cục (UUID) cho từng món
+ // Hãy cho biết bạn muốn tôi thực hiện thay đổi nào.
